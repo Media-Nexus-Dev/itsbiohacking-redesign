@@ -104,13 +104,27 @@
     .nav-top-right {
       display: flex; align-items: center; gap: 10px;
     }
-    .nav-search-btn {
-      width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; background: transparent; font-size: 16px; color: var(--text);
-      transition: all .15s;
+    .nav-search-field {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 7px 14px;
+      transition: border-color .15s; width: 260px;
     }
-    .nav-search-btn:hover { border-color: var(--green); color: var(--green); }
+    .nav-search-field:focus-within { border-color: var(--green); }
+    .nav-search-field span { font-size: 14px; color: var(--muted); flex-shrink: 0; }
+    .nav-search-field input {
+      border: none; outline: none; background: transparent;
+      font-size: 13px; font-family: 'Inter', sans-serif; color: var(--navy); width: 100%;
+    }
+    .nav-search-field input::placeholder { color: #94A3B8; }
+    .nav-calc-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border: 1.5px solid var(--green);
+      border-radius: 8px; font-size: 12px; font-weight: 700;
+      color: var(--green); background: transparent; cursor: pointer;
+      transition: all .15s; white-space: nowrap; text-decoration: none;
+    }
+    .nav-calc-btn:hover { background: var(--green); color: #fff; }
     .btn-nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 9px 18px; background: var(--green); color: #fff;
@@ -137,38 +151,28 @@
     .nav-bottom .sep { width: 1px; height: 14px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
 
     /* ── Hero Search Box ─────────────────────────────── */
-    .hero-search-wrap { margin: 0 auto; max-width: 720px; }
+    .hero-search-wrap { margin: 0 auto; max-width: 860px; }
     .hero-search-box {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 18px;
       box-shadow: 0 24px 64px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.08);
       overflow: hidden;
       margin-bottom: 16px;
     }
     .hero-search-row {
-      display: flex; align-items: center; padding: 6px 6px 6px 20px; gap: 8px;
+      display: flex; align-items: center; padding: 10px 10px 10px 28px; gap: 10px;
     }
-    .hero-search-icon { font-size: 18px; color: var(--muted); flex-shrink: 0; }
+    .hero-search-icon { font-size: 22px; color: var(--muted); flex-shrink: 0; }
     .hero-search-input {
       flex: 1; border: none; outline: none; background: transparent;
-      font-size: 16px; font-family: 'Inter', sans-serif; color: var(--navy);
-      padding: 12px 0;
+      font-size: 20px; font-family: 'Inter', sans-serif; color: var(--navy);
+      padding: 16px 0;
     }
     .hero-search-input::placeholder { color: #94A3B8; }
-    .hero-search-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
-    .hero-search-cats {
-      display: flex; align-items: center; padding: 0 4px;
-    }
-    .hero-search-cat {
-      padding: 8px 10px; font-size: 12px; font-weight: 600;
-      color: var(--text); border-radius: 6px; cursor: pointer;
-      transition: all .15s; white-space: nowrap;
-    }
-    .hero-search-cat:hover { background: var(--bg); color: var(--green); }
     .hero-search-btn {
       background: var(--green); color: #fff;
-      border: none; border-radius: 10px;
-      padding: 13px 24px; font-size: 15px; font-weight: 700;
+      border: none; border-radius: 12px;
+      padding: 18px 32px; font-size: 17px; font-weight: 700;
       cursor: pointer; transition: all .18s;
       display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;
     }
@@ -186,14 +190,14 @@
     .hero-search-tags {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
     }
-    .hero-tag-label { font-size: 12px; color: #64748B; font-weight: 500; margin-right: 2px; }
+    .hero-tag-label { font-size: 12px; color: rgba(255,255,255,.5); font-weight: 500; margin-right: 4px; }
     .hero-tag {
-      padding: 6px 14px; background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.15);
+      padding: 7px 16px; background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.25);
       border-radius: 999px; font-size: 12px; font-weight: 500; color: #CBD5E1;
       cursor: pointer; transition: all .15s;
     }
-    .hero-tag:hover { background: rgba(29,107,62,.25); border-color: rgba(52,168,90,.5); color: #6EE7B7; }
+    .hero-tag:hover { background: var(--green); border-color: var(--green); color: #fff; }
 
     /* ── Hero / Featured ──────────────────────────────── */
     .hero-section {
@@ -370,6 +374,57 @@
     .cat-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
     .cat-explore { display: flex; align-items: center; gap: 4px; margin-top: 12px; font-size: 12px; font-weight: 700; color: var(--green); }
 
+    /* ── Olympus Peptide CTA ──────────────────────────── */
+    .olympus-cta {
+      padding: 64px 0;
+      background: linear-gradient(135deg, #081520 0%, #07321F 100%);
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .olympus-cta-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .olympus-cta-left { flex: 1; min-width: 280px; }
+    .olympus-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border: 1px solid rgba(52,168,90,.4);
+      border-radius: 20px; font-size: 12px; font-weight: 700;
+      color: var(--green); background: rgba(52,168,90,.1); margin-bottom: 16px;
+    }
+    .olympus-cta-left h2 {
+      font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800;
+      color: #fff; line-height: 1.2; margin-bottom: 12px;
+    }
+    .olympus-cta-left p { color: rgba(255,255,255,.7); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+    .olympus-cta-left p strong { color: #fff; }
+    .olympus-cta-btns { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .olympus-btn-primary {
+      display: inline-flex; align-items: center;
+      padding: 14px 28px; background: var(--green); color: #fff;
+      border-radius: 10px; font-size: 15px; font-weight: 700;
+      text-decoration: none; transition: all .18s;
+    }
+    .olympus-btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,107,62,.5); }
+    .olympus-btn-secondary {
+      display: inline-flex; align-items: center;
+      padding: 14px 24px; border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.8);
+      border-radius: 10px; font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: all .18s;
+    }
+    .olympus-btn-secondary:hover { border-color: #fff; color: #fff; }
+    .olympus-cta-right { display: flex; flex-direction: column; gap: 14px; }
+    .olympus-stat {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500;
+    }
+    .olympus-stat span {
+      width: 22px; height: 22px; background: rgba(52,168,90,.2);
+      border: 1px solid var(--green); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--green); flex-shrink: 0;
+    }
+
     /* ── Latest Articles ──────────────────────────────── */
     .latest { padding: 56px 0; background: var(--bg); }
     .latest-list { display: flex; flex-direction: column; gap: 12px; }
@@ -514,7 +569,11 @@
       <div class="logo-text">It's <span>BioHacking</span></div>
     </a>
     <div class="nav-top-right">
-      <button class="nav-search-btn" aria-label="Search">🔍</button>
+      <div class="nav-search-field">
+        <span>🔍</span>
+        <input type="text" placeholder="Search peptides, protocols..." />
+      </div>
+      <a href="#" class="nav-calc-btn">🧮 Peptide Calculator</a>
       <a href="#newsletter" class="btn-nav-cta">
         <span>Subscribe Free</span> →
       </a>
@@ -535,8 +594,6 @@
     <a href="longevity.html">Longevity</a>
     <div class="sep"></div>
     <a href="resources.html">Resources</a>
-    <div class="sep"></div>
-    <a href="#" style="color:var(--green); font-weight:800;">🧮 Peptide Calculator</a>
   </nav>
 </div>
 
@@ -559,13 +616,6 @@
           <div class="hero-search-row">
             <span class="hero-search-icon">🔍</span>
             <input class="hero-search-input" type="text" placeholder="Search peptides, therapies, protocols..." />
-            <div class="hero-search-divider"></div>
-            <div class="hero-search-cats">
-              <span class="hero-search-cat">All</span>
-              <span class="hero-search-cat">Peptides</span>
-              <span class="hero-search-cat">Protocols</span>
-              <span class="hero-search-cat">Research</span>
-            </div>
             <button class="hero-search-btn">✦ Search</button>
           </div>
           <div class="hero-search-ai">
@@ -820,6 +870,29 @@
 </section>
 
 <!-- ═══════════════════════ WHAT'S LATEST ════════════════════════ -->
+<!-- ═══════════════════════ OLYMPUS PEPTIDE CTA ══════════════════ -->
+<section class="olympus-cta">
+  <div class="container">
+    <div class="olympus-cta-inner">
+      <div class="olympus-cta-left">
+        <div class="olympus-badge">🏛 Trusted Supplier</div>
+        <h2>Ready to Start Your Peptide Protocol?</h2>
+        <p>We partner with <strong>Olympus Peptide</strong> — lab-tested, COA-verified peptides trusted by researchers and biohackers worldwide.</p>
+        <div class="olympus-cta-btns">
+          <a href="https://olympuspeptide.com" target="_blank" class="olympus-btn-primary">Shop Olympus Peptide →</a>
+          <a href="peptides-101.html" class="olympus-btn-secondary">Learn What to Buy First</a>
+        </div>
+      </div>
+      <div class="olympus-cta-right">
+        <div class="olympus-stat"><span>✔</span> Third-party lab tested</div>
+        <div class="olympus-stat"><span>✔</span> COA available for every product</div>
+        <div class="olympus-stat"><span>✔</span> Fast US shipping</div>
+        <div class="olympus-stat"><span>✔</span> Used by 10,000+ researchers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="latest">
   <div class="container">
     <div class="section-header">
