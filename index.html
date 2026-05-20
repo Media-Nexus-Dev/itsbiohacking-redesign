@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>It's BioHacking — Science-Backed Peptide Research & AI-Powered Answers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E293B;
+      background: #fff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Tokens ───────────────────────────────────────── */
+    :root {
+      --green:       #059669;
+      --green-dark:  #047857;
+      --green-light: #D1FAE5;
+      --green-mid:   #6EE7B7;
+      --navy:        #0F172A;
+      --text:        #334155;
+      --muted:       #94A3B8;
+      --border:      #E2E8F0;
+      --bg-light:    #F8FAFC;
+      --bg-green:    #F0FDF4;
+      --white:       #FFFFFF;
+      --max:         1200px;
+      --radius:      12px;
+    }
+
+    /* ── Utilities ────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--green);
+      background: var(--green-light); padding: 4px 10px; border-radius: 999px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all .18s ease; border: none; white-space: nowrap;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(5,150,105,.3); }
+    .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 800; color: var(--navy); line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--text); line-height: 1.7;
+    }
+    .divider { width: 40px; height: 3px; background: var(--green); border-radius: 2px; margin: 14px 0 20px; }
+
+    /* ── Nav ──────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; max-width: var(--max); margin: 0 auto; padding: 0 24px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: linear-gradient(135deg, #059669, #10B981);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 17px; color: var(--navy); }
+    .logo-text span { color: var(--green); font-style: italic; }
+    .nav-links {
+      display: flex; align-items: center; gap: 0; list-style: none; flex: 1; justify-content: center;
+    }
+    .nav-links a {
+      padding: 7px 11px; border-radius: 6px;
+      font-size: 12px; font-weight: 600; color: var(--text);
+      letter-spacing: .02em; text-transform: uppercase;
+      transition: all .15s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--green); background: var(--bg-green); }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-search-btn {
+      width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .15s; background: transparent;
+    }
+    .nav-search-btn:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(170deg, #0B1628 0%, #0D2338 45%, #053D2A 100%);
+      padding: 80px 0 72px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 60% at 50% 100%, rgba(5,150,105,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 80% 20%, rgba(16,185,129,.08) 0%, transparent 60%);
+    }
+    /* Decorative grid lines */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; text-align: center; }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(5,150,105,.15); border: 1px solid rgba(5,150,105,.25);
+      border-radius: 999px; padding: 6px 16px; margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); }
+    .hero-eyebrow span { font-size: 12px; font-weight: 600; color: var(--green-mid); letter-spacing: .06em; }
+
+    /* Brand */
+    .hero-brand {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(36px, 6vw, 68px); line-height: 1.05;
+      color: #fff; margin-bottom: 12px; letter-spacing: -.01em;
+    }
+    .hero-brand em { color: var(--green-mid); font-style: italic; }
+    .hero-tagline {
+      font-size: clamp(15px, 2vw, 18px); color: #94A3B8;
+      margin-bottom: 44px; letter-spacing: .01em;
+    }
+
+    /* ── Search Box ───────────────────────────────────── */
+    .search-box {
+      max-width: 680px; margin: 0 auto 20px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+    .search-input-row {
+      display: flex; align-items: center; padding: 6px 6px 6px 20px; gap: 8px;
+    }
+    .search-icon { font-size: 18px; flex-shrink: 0; color: #94A3B8; }
+    .search-input {
+      flex: 1; border: none; outline: none; background: transparent;
+      font-size: 16px; font-family: 'Inter', sans-serif; color: var(--navy);
+      padding: 10px 0;
+    }
+    .search-input::placeholder { color: #94A3B8; }
+    .search-divider { width: 1px; height: 28px; background: var(--border); flex-shrink: 0; }
+    .search-categories {
+      display: flex; align-items: center; gap: 0;
+      padding: 0 4px;
+    }
+    .search-cat {
+      padding: 8px 10px; font-size: 12px; font-weight: 600;
+      color: var(--text); border-radius: 6px; cursor: pointer;
+      transition: all .15s; white-space: nowrap;
+    }
+    .search-cat:hover { background: var(--bg-light); color: var(--green); }
+    .search-btn {
+      background: var(--green); color: #fff;
+      border: none; border-radius: 10px;
+      padding: 12px 24px; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: all .18s;
+      display: flex; align-items: center; gap: 6px; white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .search-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    /* AI badge inside search */
+    .search-ai-badge {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px 8px 12px; background: var(--bg-green);
+      border-top: 1px solid #D1FAE5;
+    }
+    .ai-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.85)} }
+    .search-ai-badge span { font-size: 12px; color: #047857; font-weight: 500; }
+    .search-ai-badge strong { font-weight: 700; }
+
+    /* Tags */
+    .search-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin-bottom: 0;
+    }
+    .search-tag {
+      padding: 6px 14px; background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px; font-size: 12px; font-weight: 500;
+      color: #CBD5E1; cursor: pointer; transition: all .15s;
+    }
+    .search-tag:hover { background: rgba(5,150,105,.2); border-color: rgba(5,150,105,.4); color: var(--green-mid); }
+    .search-tag-label { font-size: 11px; color: #64748B; font-weight: 500; margin-right: 4px; }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; margin-top: 48px; flex-wrap: wrap;
+    }
+    .hstat { text-align: center; }
+    .hstat-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: #fff; line-height: 1; }
+    .hstat-num span { color: var(--green-mid); }
+    .hstat-lbl { font-size: 12px; color: #64748B; margin-top: 3px; }
+    .hstat-sep { width: 1px; height: 36px; background: rgba(255,255,255,.1); }
+
+    /* ── Trust bar ────────────────────────────────────── */
+    .trust-bar {
+      background: var(--bg-green);
+      border-bottom: 1px solid #D1FAE5; padding: 14px 0;
+    }
+    .trust-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 36px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; color: #047857;
+    }
+
+    /* ── Featured Content ─────────────────────────────── */
+    .featured { padding: 80px 0; }
+    .section-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 36px;
+    }
+    .featured-grid {
+      display: grid; grid-template-columns: 5fr 3fr; gap: 24px;
+    }
+
+    /* Main featured card */
+    .featured-main {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      transition: all .22s;
+    }
+    .featured-main:hover { box-shadow: 0 16px 48px rgba(15,23,42,.1); transform: translateY(-3px); }
+    .fm-image {
+      height: 300px; background: linear-gradient(135deg, #1a3a2a 0%, #0a2218 50%, #1a2f1a 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 96px; position: relative;
+    }
+    .fm-image-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 50%);
+    }
+    .fm-image-label { position: absolute; bottom: 16px; left: 16px; z-index: 1; display: flex; gap: 6px; }
+    .fm-body { padding: 28px 28px 24px; background: #fff; flex: 1; display: flex; flex-direction: column; }
+    .fm-cats { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+    .fm-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); }
+    .fm-cat + .fm-cat::before { content: '·'; margin-right: 6px; color: var(--muted); }
+    .fm-title { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 10px; }
+    .fm-excerpt { font-size: 14px; color: var(--text); line-height: 1.7; flex: 1; }
+    .fm-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .fm-meta-left { display: flex; align-items: center; gap: 8px; }
+    .author-av { width: 26px; height: 26px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+    .fm-meta-left span { font-size: 12px; font-weight: 600; color: var(--navy); }
+    .fm-date { font-size: 12px; color: var(--muted); }
+    .read-badge { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); }
+
+    /* Side article list */
+    .featured-side { display: flex; flex-direction: column; gap: 12px; }
+    .side-card {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px; border-radius: 10px; border: 1px solid var(--border);
+      background: #fff; transition: all .2s; cursor: pointer;
+    }
+    .side-card:hover { border-color: var(--green); background: var(--bg-green); }
+    .side-num { font-size: 20px; font-weight: 800; color: #E2E8F0; font-family: 'Syne', sans-serif; line-height: 1; flex-shrink: 0; width: 28px; }
+    .side-card:hover .side-num { color: var(--green-light); }
+    .side-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 4px; }
+    .side-title { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 4px; }
+    .side-meta { font-size: 11px; color: var(--muted); }
+
+    /* ── Article Grid ─────────────────────────────────── */
+    .articles { padding: 0 0 80px; }
+    .articles-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .article-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: #fff; transition: all .22s; cursor: pointer;
+    }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(15,23,42,.09); border-color: var(--green); }
+    .ac-image {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 56px; position: relative; overflow: hidden;
+    }
+    .ac-image.grad-a { background: linear-gradient(135deg, #f0f9ff, #dbeafe); }
+    .ac-image.grad-b { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+    .ac-image.grad-c { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+    .ac-image.grad-d { background: linear-gradient(135deg, #f0fdf4, #bbf7d0); }
+    .ac-image.grad-e { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+    .ac-image.grad-f { background: linear-gradient(135deg, #fff7ed, #fed7aa); }
+    .ac-body { padding: 18px 20px 20px; }
+    .ac-cats { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+    .ac-cat { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+    .ac-cat + .ac-cat::before { content: '·'; margin-right: 6px; color: var(--muted); }
+    .ac-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 8px; }
+    .ac-excerpt { font-size: 13px; color: var(--text); line-height: 1.65; }
+    .ac-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+    .ac-read { font-weight: 600; color: var(--green); font-size: 12px; display: flex; align-items: center; gap: 3px; }
+
+    /* ── Category Cards ───────────────────────────────── */
+    .categories { padding: 80px 0; background: var(--bg-light); }
+    .cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .cat-card {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 20px; text-align: center; transition: all .22s; cursor: pointer;
+    }
+    .cat-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(5,150,105,.1); transform: translateY(-3px); }
+    .cat-icon { font-size: 36px; margin-bottom: 12px; }
+    .cat-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .cat-count { font-size: 12px; color: var(--muted); }
+    .cat-card:hover .cat-name { color: var(--green); }
+
+    /* ── Popular Posts ────────────────────────────────── */
+    .popular { padding: 80px 0; }
+    .popular-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .popular-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; background: #fff; transition: all .22s; cursor: pointer;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .popular-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(5,150,105,.08); transform: translateY(-3px); }
+    .popular-rank { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #F1F5F9; line-height: 1; }
+    .popular-card:hover .popular-rank { color: var(--green-light); }
+    .popular-cats { display: flex; gap: 6px; flex-wrap: wrap; }
+    .popular-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); }
+    .popular-cat + .popular-cat::before { content: '·'; margin-right: 6px; color: var(--muted); }
+    .popular-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .popular-card:hover .popular-title { color: var(--green-dark); }
+    .popular-meta { font-size: 12px; color: var(--muted); margin-top: auto; }
+
+    /* ── Peptide Calculator CTA ───────────────────────── */
+    .calculator-cta {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #0F172A 0%, #0D2336 50%, #053D2A 100%);
+      position: relative; overflow: hidden;
+    }
+    .calculator-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 60% 50%, rgba(5,150,105,.15) 0%, transparent 70%);
+    }
+    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+    .calc-text .section-title { color: #fff; }
+    .calc-text .section-sub { color: #94A3B8; margin-top: 12px; max-width: 440px; }
+    .calc-actions { display: flex; gap: 10px; margin-top: 28px; }
+    .btn-ghost { background: rgba(255,255,255,.08); color: #94A3B8; border: 1px solid rgba(255,255,255,.12); }
+    .btn-ghost:hover { background: rgba(255,255,255,.14); color: #fff; }
+
+    /* Calculator preview widget */
+    .calc-widget {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px; padding: 28px; backdrop-filter: blur(8px);
+    }
+    .cw-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .cw-icon { width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #059669, #10B981); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .cw-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .cw-sub { font-size: 12px; color: #64748B; }
+    .cw-form { display: flex; flex-direction: column; gap: 12px; }
+    .cw-label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+    .cw-select {
+      width: 100%; padding: 10px 14px; border-radius: 8px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+      color: #E2E8F0; font-size: 14px; font-family: 'Inter', sans-serif;
+      appearance: none; cursor: pointer;
+    }
+    .cw-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cw-result {
+      background: rgba(5,150,105,.15); border: 1px solid rgba(5,150,105,.25);
+      border-radius: 10px; padding: 14px 16px; margin-top: 4px;
+    }
+    .cwr-label { font-size: 11px; color: #6EE7B7; font-weight: 600; margin-bottom: 4px; }
+    .cwr-value { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; }
+    .cwr-sub { font-size: 11px; color: #64748B; margin-top: 2px; }
+
+    /* ── Newsletter ───────────────────────────────────── */
+    .newsletter { padding: 72px 0; background: var(--bg-green); border-top: 1px solid #D1FAE5; border-bottom: 1px solid #D1FAE5; }
+    .newsletter-inner { text-align: center; max-width: 520px; margin: 0 auto; }
+    .newsletter h2 { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .newsletter p { font-size: 15px; color: var(--text); margin-bottom: 24px; }
+    .nl-form { display: flex; gap: 8px; }
+    .nl-input {
+      flex: 1; padding: 12px 16px; border-radius: 8px;
+      border: 1.5px solid var(--border); font-size: 14px;
+      outline: none; background: #fff; transition: border-color .15s;
+    }
+    .nl-input:focus { border-color: var(--green); }
+    .nl-sub { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer { background: var(--navy); padding: 56px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand { }
+    .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .footer-logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: #fff; }
+    .footer-logo-text span { color: var(--green-mid); font-style: italic; }
+    .footer-brand p { font-size: 13px; color: #475569; line-height: 1.7; max-width: 220px; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #64748B; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 13px; color: #475569; transition: color .15s; }
+    .footer-col a:hover { color: var(--green-mid); }
+    .footer-bottom { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.06); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 12px; color: #334155; }
+    .footer-legal { display: flex; gap: 16px; }
+    .footer-legal a { font-size: 12px; color: #334155; transition: color .15s; }
+    .footer-legal a:hover { color: var(--green-mid); }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .featured-grid, .calc-inner { grid-template-columns: 1fr; }
+      .featured-side { flex-direction: row; flex-wrap: wrap; }
+      .side-card { flex: 1 1 240px; }
+      .cat-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .articles-grid, .popular-grid { grid-template-columns: 1fr 1fr; }
+      .search-categories { display: none; }
+      .search-divider { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .articles-grid, .popular-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: repeat(2,1fr); }
+      .nl-form { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .hstat-sep { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVIGATION ══════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">🧬</div>
+      <div class="logo-text">It's <span>BioHacking</span></div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#">Peptides 101</a></li>
+      <li><a href="#">Weight Loss</a></li>
+      <li><a href="#">Anti-Aging & Skin</a></li>
+      <li><a href="#">Healing & Recovery</a></li>
+      <li><a href="#">Muscle & Fitness</a></li>
+      <li><a href="#">Longevity</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#" style="color:var(--green); font-weight:700;">Peptide Calculator</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="nav-search-btn" aria-label="Search">🔍</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO + SEARCH ═══════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        <span>Science-Backed Peptide Research & AI-Powered Answers</span>
+      </div>
+
+      <h1 class="hero-brand">It's <em>BioHacking</em></h1>
+      <p class="hero-tagline">Your evidence-based guide to peptides, protocols, and performance biology.</p>
+
+      <!-- Search box -->
+      <div class="search-box">
+        <div class="search-input-row">
+          <span class="search-icon">🔍</span>
+          <input class="search-input" type="text" placeholder="Search peptides, therapies, protocols..." />
+          <div class="search-divider"></div>
+          <div class="search-categories">
+            <span class="search-cat">All</span>
+            <span class="search-cat">Peptides</span>
+            <span class="search-cat">Protocols</span>
+            <span class="search-cat">Research</span>
+          </div>
+          <button class="search-btn">
+            <span>✦</span> Search
+          </button>
+        </div>
+        <div class="search-ai-badge">
+          <div class="ai-dot"></div>
+          <span><strong>AI-powered search</strong> — Ask in plain English: "best peptide for tendon repair" or "BPC-157 dosage"</span>
+        </div>
+      </div>
+
+      <!-- Quick search tags -->
+      <div class="search-tags">
+        <span class="search-tag-label">Popular:</span>
+        <span class="search-tag">peptides</span>
+        <span class="search-tag">weight loss</span>
+        <span class="search-tag">BPC-157</span>
+        <span class="search-tag">tissue recovery</span>
+        <span class="search-tag">GLP-1</span>
+        <span class="search-tag">TB-500</span>
+        <span class="search-tag">gut health</span>
+        <span class="search-tag">biohacking</span>
+        <span class="search-tag">GHK-Cu</span>
+        <span class="search-tag">Ipamorelin</span>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-num">200<span>+</span></div>
+          <div class="hstat-lbl">Research guides</div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-num">50<span>+</span></div>
+          <div class="hstat-lbl">Peptides covered</div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-num">12k<span>+</span></div>
+          <div class="hstat-lbl">Monthly readers</div>
+        </div>
+        <div class="hstat-sep"></div>
+        <div class="hstat">
+          <div class="hstat-num">100<span>%</span></div>
+          <div class="hstat-lbl">Peer-reviewed sources</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TRUST BAR ════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-inner container">
+    <div class="trust-item">🔬 Peer-Reviewed Research</div>
+    <div class="trust-item">📋 Written by Science Educators</div>
+    <div class="trust-item">🔄 Continuously Updated</div>
+    <div class="trust-item">⚖️ Unbiased & Independent</div>
+    <div class="trust-item">🛡️ Safety-First Approach</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ FEATURED ════════════════════════════ -->
+<section class="featured">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Biohacking Solutions For Better Health And Wellness</div>
+        <h2 class="section-title">Latest From the Lab</h2>
+      </div>
+      <a href="#" class="btn btn-outline">View All Articles →</a>
+    </div>
+
+    <div class="featured-grid">
+      <!-- Main featured article -->
+      <div class="featured-main">
+        <div class="fm-image">
+          💊
+          <div class="fm-image-overlay"></div>
+          <div class="fm-image-label">
+            <span class="tag">Weight Loss</span>
+          </div>
+        </div>
+        <div class="fm-body">
+          <div class="fm-cats">
+            <span class="fm-cat">Weight Loss</span>
+          </div>
+          <h2 class="fm-title">Orforglipron: The Oral GLP-1 Pill That Might Kill the Needle</h2>
+          <p class="fm-excerpt">For the first time, a non-peptide GLP-1 receptor agonist is showing weight loss results comparable to injectable semaglutide — without a single injection. We break down the mechanism, the clinical trial data, and what it means for the future of metabolic medicine.</p>
+          <div class="fm-meta">
+            <div class="fm-meta-left">
+              <div class="author-av">R</div>
+              <span>Russel B.</span>
+            </div>
+            <div class="read-badge">📖 12 min read</div>
+            <span class="fm-date">May 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Side articles -->
+      <div class="featured-side">
+        <div class="side-card">
+          <div class="side-num">01</div>
+          <div>
+            <div class="side-cat">Healing & Recovery · Peptides 101</div>
+            <div class="side-title">TB-500 Vs TB4: What's The Difference?</div>
+            <div class="side-meta">8 min read · May 2026</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-num">02</div>
+          <div>
+            <div class="side-cat">Healing & Recovery · Resource</div>
+            <div class="side-title">Wolverine Stack Explained: A Beginner's Guide To BPC-157 + TB-500</div>
+            <div class="side-meta">11 min read · May 2026</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-num">03</div>
+          <div>
+            <div class="side-cat">Peptides 101 · Resource</div>
+            <div class="side-title">Peptide Cloudiness Explained: Why Clarity Doesn't Always Mean Quality</div>
+            <div class="side-meta">6 min read · Apr 2026</div>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-num">04</div>
+          <div>
+            <div class="side-cat">Peptides 101 · Resource</div>
+            <div class="side-title">Certificate Of Analysis (COA) For Peptides: What It Is, Why It Matters & How To Read One</div>
+            <div class="side-meta">9 min read · Apr 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ ARTICLE GRID ════════════════════════ -->
+<section class="articles">
+  <div class="container">
+    <div class="articles-grid">
+
+      <div class="article-card">
+        <div class="ac-image grad-b">💪</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Muscle & Fitness</span><span class="ac-cat">Peptides 101</span></div>
+          <h3 class="ac-title">Ipamorelin: The Growth Hormone Peptide That Won't Destroy Your Organs (But Your Wallet Might Not Survive)</h3>
+          <p class="ac-excerpt">A clean, selective GH secretagogue with a strong safety profile — we cover the full picture on Ipamorelin dosing, stacking, and what the research actually supports.</p>
+          <div class="ac-meta">
+            <span>10 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="ac-image grad-d">🧪</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Healing & Recovery</span><span class="ac-cat">Resource</span></div>
+          <h3 class="ac-title">BPC-157 Dosage Guide: How To Calculate, Reconstitute & Use A 10 Mg Vial</h3>
+          <p class="ac-excerpt">Step-by-step: bacteriostatic water ratios, insulin syringe math, subcutaneous vs. intramuscular injection — everything you need to use BPC-157 correctly and safely.</p>
+          <div class="ac-meta">
+            <span>8 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="ac-image grad-c">💉</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Peptides 101</span><span class="ac-cat">Resource</span></div>
+          <h3 class="ac-title">Injectable Peptide Stacking: A Beginner's Guide To Benefits, Risks & How It Works</h3>
+          <p class="ac-excerpt">Combining peptides can amplify results — but only when done correctly. This guide covers synergistic stacks, timing windows, and the safety considerations beginners miss.</p>
+          <div class="ac-meta">
+            <span>9 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="ac-image grad-e">✨</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Anti-Aging & Skin</span><span class="ac-cat">Peptides 101</span></div>
+          <h3 class="ac-title">GHK-Cu 101: The "Blue Serum" Everyone's Talking About — What It Is, How It Works, And Whether It's Actually Worth The Hype</h3>
+          <p class="ac-excerpt">Copper peptide GHK-Cu has become the darling of the anti-aging world. We examine the collagen synthesis research, skin regeneration claims, and what topical vs. injectable application actually does.</p>
+          <div class="ac-meta">
+            <span>11 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="ac-image grad-f">⚖️</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Peptides 101</span><span class="ac-cat">Weight Loss</span></div>
+          <h3 class="ac-title">Retatrutide Peptide: The Next-Generation Weight Loss And Metabolic Health Breakthrough</h3>
+          <p class="ac-excerpt">A triple-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously — Retatrutide's Phase 2 data has turned heads across metabolic medicine. Here's the full breakdown.</p>
+          <div class="ac-meta">
+            <span>10 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="ac-image grad-a">💊</div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="ac-cat">Peptides 101</span><span class="ac-cat">Weight Loss</span></div>
+          <h3 class="ac-title">Semaglutide (Rybelsus): The Diabetes Drug That Accidentally Became Hollywood's Worst-Kept Secret</h3>
+          <p class="ac-excerpt">From T2D management to celebrity weight loss phenomenon — we trace the science, the clinical trials, and the ethical questions surrounding semaglutide's cultural moment.</p>
+          <div class="ac-meta">
+            <span>13 min read</span>
+            <span class="ac-read">Read →</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="#" class="btn btn-outline">Load More Articles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CATEGORIES ══════════════════════════ -->
+<section class="categories">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Browse by Topic</div>
+        <h2 class="section-title">Explore the Library</h2>
+      </div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon">🧬</div>
+        <div class="cat-name">Peptides 101</div>
+        <div class="cat-count">42 guides · Foundational</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">⚖️</div>
+        <div class="cat-name">Weight Loss</div>
+        <div class="cat-count">18 guides · GLP-1, Semaglutide</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">✨</div>
+        <div class="cat-name">Anti-Aging & Skin</div>
+        <div class="cat-count">14 guides · GHK-Cu, Collagen</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏃</div>
+        <div class="cat-name">Healing & Recovery</div>
+        <div class="cat-count">22 guides · BPC-157, TB-500</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">💪</div>
+        <div class="cat-name">Muscle & Fitness</div>
+        <div class="cat-count">16 guides · Ipamorelin, GH</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">⏳</div>
+        <div class="cat-name">Longevity</div>
+        <div class="cat-count">12 guides · Epithalon, MOTS-C</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">📋</div>
+        <div class="cat-name">Resources</div>
+        <div class="cat-count">Protocols, COAs, Stacking guides</div>
+      </div>
+      <div class="cat-card" style="border-color:var(--green); background:var(--bg-green);">
+        <div class="cat-icon">🧮</div>
+        <div class="cat-name" style="color:var(--green);">Peptide Calculator</div>
+        <div class="cat-count">Dosage · Reconstitution · Timing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MOST POPULAR ════════════════════════ -->
+<section class="popular">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Reader Favorites</div>
+        <h2 class="section-title">Most Popular Posts</h2>
+      </div>
+      <a href="#" class="btn btn-outline">See All Popular →</a>
+    </div>
+    <div class="popular-grid">
+      <div class="popular-card">
+        <div class="popular-rank">01</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Longevity</span>
+          <span class="popular-cat">Peptides 101</span>
+        </div>
+        <div class="popular-title">MOTS-C Vs SS-31: Which Mitochondrial Peptide Actually Works (And Which One's Burning Your Money)</div>
+        <div class="popular-meta">14 min read · Updated May 2026</div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-rank">02</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Peptides 101</span>
+        </div>
+        <div class="popular-title">Peptide Classification Explained: Types, Functions & Results</div>
+        <div class="popular-meta">9 min read · Updated Apr 2026</div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-rank">03</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Peptides 101</span>
+          <span class="popular-cat">Longevity</span>
+        </div>
+        <div class="popular-title">Beyond Recovery: Peptides For Energy, Focus, And Longevity</div>
+        <div class="popular-meta">11 min read · Updated Apr 2026</div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-rank">04</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Healing & Recovery</span>
+          <span class="popular-cat">Peptides 101</span>
+        </div>
+        <div class="popular-title">TB-500 101: The "Systemic Healing Peptide" Athletes Are Using — What It Is, How It Works, And Whether It's Right For You</div>
+        <div class="popular-meta">12 min read · Updated Mar 2026</div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-rank">05</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Healing & Recovery</span>
+          <span class="popular-cat">Resource</span>
+        </div>
+        <div class="popular-title">Wolverine Stack Explained: A Beginner's Guide To BPC-157 + TB-500</div>
+        <div class="popular-meta">11 min read · Updated Mar 2026</div>
+      </div>
+      <div class="popular-card">
+        <div class="popular-rank">06</div>
+        <div class="popular-cats">
+          <span class="popular-cat">Peptides 101</span>
+          <span class="popular-cat">Resource</span>
+        </div>
+        <div class="popular-title">Certificate Of Analysis (COA) For Peptides: What It Is, Why It Matters & How To Read One</div>
+        <div class="popular-meta">9 min read · Updated Feb 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PEPTIDE CALCULATOR CTA ══════════════ -->
+<section class="calculator-cta">
+  <div class="container">
+    <div class="calc-inner">
+      <div class="calc-text">
+        <div class="section-label" style="color:var(--green-mid);">Free Tool</div>
+        <h2 class="section-title">Peptide Calculator</h2>
+        <p class="section-sub">Stop guessing with syringes. Our calculator handles reconstitution math, dosage per injection, and cycle timing — instantly, for any vial size.</p>
+        <div class="calc-actions">
+          <a href="#" class="btn btn-primary">Open Calculator →</a>
+          <a href="#" class="btn btn-ghost">How It Works</a>
+        </div>
+      </div>
+      <div class="calc-widget">
+        <div class="cw-header">
+          <div class="cw-icon">🧮</div>
+          <div>
+            <div class="cw-title">Reconstitution Calculator</div>
+            <div class="cw-sub">Get your exact injection volume</div>
+          </div>
+        </div>
+        <div class="cw-form">
+          <div>
+            <div class="cw-label">Peptide</div>
+            <select class="cw-select">
+              <option>BPC-157 — 5mg vial</option>
+              <option>TB-500 — 5mg vial</option>
+              <option>Ipamorelin — 2mg vial</option>
+              <option>Epithalon — 10mg vial</option>
+              <option>Semax — 30mg vial</option>
+            </select>
+          </div>
+          <div class="cw-row">
+            <div>
+              <div class="cw-label">BAC Water Added</div>
+              <select class="cw-select">
+                <option>1 mL</option>
+                <option>2 mL</option>
+                <option>3 mL</option>
+              </select>
+            </div>
+            <div>
+              <div class="cw-label">Desired Dose</div>
+              <select class="cw-select">
+                <option>250 mcg</option>
+                <option>500 mcg</option>
+                <option>1,000 mcg (1mg)</option>
+              </select>
+            </div>
+          </div>
+          <div class="cw-result">
+            <div class="cwr-label">↳ INJECT THIS VOLUME</div>
+            <div class="cwr-value">0.05 mL <span style="font-size:14px;color:#6EE7B7;">(5 IU on a U100 syringe)</span></div>
+            <div class="cwr-sub">Based on 5mg vial + 1mL BAC water → 5,000 mcg/mL concentration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ NEWSLETTER ══════════════════════════ -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-label" style="text-align:center;">Stay Current</div>
+    <h2>The Peptide Science Weekly</h2>
+    <p>New research summaries, in-depth guides, and protocol updates. No fluff — just signal.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="your@email.com" />
+      <a href="#" class="btn btn-primary">Subscribe Free →</a>
+    </div>
+    <p class="nl-sub">No spam. Unsubscribe anytime. Join 4,200+ readers.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-mark" style="width:28px;height:28px;font-size:13px;">🧬</div>
+          <div class="footer-logo-text">It's <span>BioHacking</span></div>
+        </div>
+        <p>Evidence-based peptide research and education for curious, science-minded individuals optimizing their biology responsibly.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">Peptides 101</a></li>
+          <li><a href="#">Beginner's Guide</a></li>
+          <li><a href="#">Peptide A–Z Index</a></li>
+          <li><a href="#">Protocols Library</a></li>
+          <li><a href="#">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Topics</h4>
+        <ul>
+          <li><a href="#">Weight Loss</a></li>
+          <li><a href="#">Anti-Aging & Skin</a></li>
+          <li><a href="#">Healing & Recovery</a></li>
+          <li><a href="#">Muscle & Fitness</a></li>
+          <li><a href="#">Longevity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="#">Peptide Calculator</a></li>
+          <li><a href="#">COA Checker</a></li>
+          <li><a href="#">Stack Builder</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 It's BioHacking. For educational purposes only. Not medical advice. Consult a qualified healthcare professional before using any peptide.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
