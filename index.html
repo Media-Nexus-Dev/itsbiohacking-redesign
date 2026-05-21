@@ -619,11 +619,15 @@
       .nav-bottom { height: 40px; padding: 0 16px; }
       .nav-bottom a { font-size: 11px; padding: 5px 10px; }
 
-      /* Hero */
-      .hero-section { padding: 48px 0 44px; min-height: auto; }
-      .hero-eyebrow { padding: 5px 14px; margin-bottom: 18px; }
-      .hero-eyebrow span { font-size: 11px; }
-      .hero-sub { font-size: 14px; margin-bottom: 28px; max-width: 100%; }
+      /* Hero — search-first on mobile, always above the fold */
+      .hero-section { padding: 20px 0 36px; min-height: auto; }
+      .hero-eyebrow { padding: 4px 12px; margin-bottom: 10px; }
+      .hero-eyebrow span { font-size: 10px; }
+      .hero-headline { font-size: 28px !important; line-height: 1.1; margin-bottom: 8px; }
+      .hero-sub {
+        font-size: 13px; margin-bottom: 18px; max-width: 100%;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      }
       .hero-search-wrap { width: 100%; max-width: 100%; padding: 0; }
       .hero-search-box { border-radius: 14px; }
       .hero-search-row { padding: 8px 8px 8px 14px; gap: 6px; }
@@ -637,9 +641,9 @@
       .hero-tag { flex-shrink: 0; padding: 6px 12px; font-size: 11px; }
       .hero-stats {
         display: grid; grid-template-columns: 1fr 1fr;
-        gap: 16px; margin-top: 32px;
+        gap: 16px; margin-top: 28px;
         background: rgba(255,255,255,.05);
-        border-radius: 12px; padding: 18px;
+        border-radius: 12px; padding: 16px;
       }
       .hstat-sep { display: none; }
       .hstat-num { font-size: 22px; }
@@ -710,9 +714,18 @@
     ══════════════════════════════════════════════════ */
     @media (max-width: 480px) {
 
-      /* Hero search — slim it down */
-      .hero-search-box { border-radius: 14px; }
+      /* Hero — strip everything above search bar for smallest screens */
+      .hero-section { padding: 16px 0 28px; }
+      .hero-eyebrow { display: none; }
+      .hero-sub { display: none; }
+      .hero-headline { font-size: 24px !important; margin-bottom: 14px; }
+
+      /* Search box */
+      .hero-search-box { border-radius: 12px; }
+      .hero-search-row { padding: 6px 6px 6px 12px; }
       .hero-search-btn { padding: 10px 14px; font-size: 13px; border-radius: 8px; }
+      /* Button: show icon only on the narrowest screens to save space */
+      .hero-search-btn .search-btn-text { display: none; }
 
       /* Hero stats — compact */
       .hero-stats { padding: 14px; gap: 12px; }
@@ -833,7 +846,7 @@
           <div class="hero-search-row">
             <span class="hero-search-icon">🔍</span>
             <input class="hero-search-input" type="text" placeholder="Search peptides, therapies, protocols..." />
-            <button class="hero-search-btn">✦ Search</button>
+            <button class="hero-search-btn">✦ <span class="search-btn-text">Search</span></button>
           </div>
           <div class="hero-search-ai">
             <div class="hero-ai-dot"></div>
