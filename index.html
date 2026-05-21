@@ -258,34 +258,48 @@
     .hstat-lbl { font-size: 12px; color: #475569; margin-top: 3px; }
     .hstat-sep { width: 1px; height: 34px; background: rgba(255,255,255,.1); }
 
-    /* Featured section below hero */
+    /* ── Featured section below hero ─────────────── */
     .featured-section {
       background: #fff;
       border-bottom: 1px solid var(--border);
       padding: 56px 0;
     }
-    .hero-layout {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;
+    /* Horizontal editorial banner */
+    .feature-banner {
+      display: flex; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border); background: #fff;
+      margin-bottom: 20px; cursor: pointer; min-height: 300px;
+      transition: box-shadow .2s, transform .2s; text-decoration: none; color: inherit;
     }
-    .hero-left { }
-    .hero-right { display: flex; flex-direction: column; gap: 16px; }
-
-    /* Main featured card */
-    .featured-main-card {
+    .feature-banner:hover { box-shadow: 0 12px 40px rgba(0,0,0,.1); transform: translateY(-2px); }
+    .feature-banner-img { width: 42%; flex-shrink: 0; overflow: hidden; }
+    .feature-banner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .feature-banner:hover .feature-banner-img img { transform: scale(1.03); }
+    .feature-banner-body {
+      flex: 1; padding: 32px 34px 28px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .feature-eyebrow { margin-bottom: 12px; }
+    .feature-banner-title {
+      font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 800;
+      color: var(--navy); line-height: 1.2; margin: 0 0 12px;
+    }
+    .feature-banner-excerpt { font-size: 14px; color: var(--text); line-height: 1.65; margin-bottom: 16px; }
+    .feature-banner-meta { font-size: 12px; color: var(--muted); display: flex; gap: 8px; align-items: center; margin-bottom: 16px; }
+    /* Sub-cards row */
+    .feature-sub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-sub-card {
       border-radius: var(--radius); overflow: hidden;
       border: 1px solid var(--border); background: #fff;
-      transition: box-shadow .2s, transform .2s; cursor: pointer;
+      cursor: pointer; transition: all .2s; text-decoration: none; color: inherit;
     }
-    .featured-main-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
-    .fmc-img { width: 100%; height: 280px; }
-    .fmc-img img { width: 100%; height: 100%; }
-    .fmc-body { padding: 20px 22px 18px; }
-    .fmc-cat { margin-bottom: 8px; }
-    .fmc-title {
-      font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 800;
-      color: var(--navy); line-height: 1.25; margin-bottom: 8px;
-    }
-    .fmc-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); margin-top: 12px; }
+    .feature-sub-card:hover { border-color: var(--green); box-shadow: 0 6px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .fscard-img { height: 150px; overflow: hidden; }
+    .fscard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .feature-sub-card:hover .fscard-img img { transform: scale(1.04); }
+    .fscard-body { padding: 14px 16px 16px; }
+    .fscard-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.35; margin: 5px 0 6px; }
+    .fscard-meta { font-size: 11px; color: var(--muted); }
     .read-more {
       display: inline-flex; align-items: center; gap: 4px;
       font-size: 12px; font-weight: 700; color: var(--green);
@@ -293,21 +307,7 @@
     }
     .read-more:hover { gap: 8px; }
 
-    /* Side cards */
-    .side-article {
-      display: flex; gap: 14px; align-items: flex-start;
-      padding: 14px; border-radius: var(--radius);
-      border: 1px solid var(--border); background: #fff;
-      cursor: pointer; transition: all .2s;
-    }
-    .side-article:hover { border-color: var(--green); box-shadow: 0 4px 16px rgba(0,0,0,.07); }
-    .side-thumb { width: 90px; height: 70px; border-radius: 7px; overflow: hidden; flex-shrink: 0; }
-    .side-thumb img { width: 100%; height: 100%; }
-    .side-info { flex: 1; }
-    .side-title { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 4px 0; }
-    .side-meta { font-size: 11px; color: var(--muted); }
-
-    /* ── Trending Now ─────────────────────────────────── */
+    /* ── Trending Now — 2×2 ranked grid ──────────────── */
     .trending { padding: 56px 0; background: var(--bg); }
     .section-header {
       display: flex; align-items: flex-end; justify-content: space-between;
@@ -320,38 +320,26 @@
       color: var(--text); background: #fff; cursor: pointer; transition: all .15s;
     }
     .btn-outline:hover { border-color: var(--green); color: var(--green); }
-    .trending-grid {
-      display: grid; grid-template-columns: 3fr 2fr; gap: 24px;
-    }
-    /* Trending main */
-    .trending-main {
+    .trending-rank-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .rank-card {
       border-radius: var(--radius); overflow: hidden;
       border: 1px solid var(--border); background: #fff;
-      cursor: pointer; transition: all .2s;
+      cursor: pointer; transition: all .2s; text-decoration: none; color: inherit;
     }
-    .trending-main:hover { box-shadow: 0 12px 36px rgba(0,0,0,.09); transform: translateY(-2px); }
-    .tm-img { height: 340px; overflow: hidden; }
-    .tm-img img { width: 100%; height: 100%; transition: transform .3s; }
-    .trending-main:hover .tm-img img { transform: scale(1.03); }
-    .tm-body { padding: 20px 22px; }
-    .tm-cats { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
-    .tm-title { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 8px; }
-    .tm-excerpt { font-size: 14px; color: var(--text); line-height: 1.65; }
-    .tm-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; font-size: 12px; color: var(--muted); }
-
-    /* Trending side list */
-    .trending-side { display: flex; flex-direction: column; gap: 12px; }
-    .trending-side-item {
-      display: flex; gap: 12px; align-items: flex-start;
-      padding: 14px; border-radius: var(--radius);
-      border: 1px solid var(--border); background: #fff;
-      cursor: pointer; transition: all .2s;
+    .rank-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,.1); transform: translateY(-3px); }
+    .rank-card-img { position: relative; height: 220px; overflow: hidden; }
+    .rank-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .rank-card:hover .rank-card-img img { transform: scale(1.04); }
+    .rank-badge {
+      position: absolute; top: 12px; left: 12px;
+      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 800;
+      color: #fff; background: var(--green); padding: 4px 10px; border-radius: 6px;
+      letter-spacing: .04em;
     }
-    .trending-side-item:hover { border-color: var(--green); box-shadow: 0 4px 14px rgba(0,0,0,.07); }
-    .tsi-thumb { width: 76px; height: 60px; border-radius: 7px; overflow: hidden; flex-shrink: 0; }
-    .tsi-thumb img { width: 100%; height: 100%; }
-    .tsi-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.35; margin: 3px 0; }
-    .tsi-meta { font-size: 11px; color: var(--muted); }
+    .rank-card-body { padding: 16px 18px 20px; }
+    .rank-card-cats { margin-bottom: 5px; }
+    .rank-card-title { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 8px; }
+    .rank-card-meta { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
 
     /* ── Categories ───────────────────────────────────── */
     .categories { padding: 56px 0; background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -569,15 +557,14 @@
       .hero-stats { gap: 28px; margin-top: 40px; }
 
       /* Featured */
-      .hero-layout { grid-template-columns: 1fr; }
-      .hero-right { flex-direction: row; flex-wrap: wrap; gap: 12px; }
-      .side-article { flex: 1 1 280px; }
+      .feature-banner { min-height: 260px; }
+      .feature-banner-img { width: 38%; }
+      .feature-banner-title { font-size: 22px; }
+      .feature-sub-grid { grid-template-columns: repeat(3, 1fr); }
 
       /* Trending */
-      .trending-grid { grid-template-columns: 1fr; }
-      .tm-img { height: 260px; }
-      .trending-side { flex-direction: row; flex-wrap: wrap; gap: 12px; }
-      .trending-side-item { flex: 1 1 280px; }
+      .trending-rank-grid { grid-template-columns: repeat(2, 1fr); }
+      .rank-card-img { height: 180px; }
 
       /* Categories */
       .cat-grid { grid-template-columns: repeat(2, 1fr); }
@@ -663,18 +650,20 @@
       .section-header .btn-outline { width: 100%; justify-content: center; }
       .section-title { font-size: 22px; }
 
-      /* Featured */
-      .hero-right { flex-direction: column; }
-      .side-article { flex: unset; width: 100%; }
-      .side-thumb { width: 80px; height: 64px; }
-      .fmc-img { height: 200px; }
-      .fmc-title { font-size: 17px; }
+      /* Featured — stack banner vertically on mobile */
+      .feature-banner { flex-direction: column; min-height: auto; }
+      .feature-banner-img { width: 100%; height: 220px; }
+      .feature-banner-body { padding: 20px 20px 18px; }
+      .feature-banner-title { font-size: 20px; }
+      .feature-banner-excerpt { font-size: 13px; margin-bottom: 12px; }
+      .feature-sub-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .fscard-img { height: 130px; }
 
-      /* Trending */
-      .tm-img { height: 200px; }
-      .tm-title { font-size: 18px; }
-      .trending-side { flex-direction: column; gap: 10px; }
-      .trending-side-item { flex: unset; }
+      /* Trending — keep 2 columns on mobile */
+      .trending-rank-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .rank-card-img { height: 150px; }
+      .rank-card-body { padding: 12px 14px 16px; }
+      .rank-card-title { font-size: 14px; }
 
       /* Categories */
       .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -730,6 +719,13 @@
       /* Hero stats — compact */
       .hero-stats { padding: 14px; gap: 12px; }
       .hstat-num { font-size: 20px; }
+
+      /* Featured — single column on tiny screens */
+      .feature-sub-grid { grid-template-columns: 1fr; }
+
+      /* Trending — single column on tiny screens */
+      .trending-rank-grid { grid-template-columns: 1fr; }
+      .rank-card-img { height: 180px; }
 
       /* Categories */
       .cat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -883,76 +879,65 @@
 <!-- ═══════════════════════ FEATURED ARTICLES ════════════════════ -->
 <section class="featured-section">
   <div class="container">
-    <div class="hero-layout">
-      <!-- Main featured -->
-      <div class="featured-main-card">
-        <div class="fmc-img">
-          <img src="https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=800&auto=format&fit=crop&q=80" alt="Orforglipron GLP-1 oral pill" />
-        </div>
-        <div class="fmc-body">
-          <div class="fmc-cat"><span class="tag">Weight Loss</span></div>
-          <h2 class="fmc-title">Orforglipron: The Oral GLP-1 Pill That Might Kill the Needle</h2>
-          <p style="font-size:13px; color:var(--text); line-height:1.6;">For the first time, a non-peptide GLP-1 receptor agonist is showing weight loss results comparable to injectable semaglutide — without a single injection.</p>
-          <div class="fmc-meta">
-            <span>📖 12 min read</span>
-            <span>·</span>
-            <span>May 2026</span>
-            <span>·</span>
-            <span>Russel B.</span>
-          </div>
-          <a href="#" class="read-more">Read Article →</a>
-        </div>
-      </div>
 
-      <!-- Side articles -->
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div class="side-article">
-          <div class="side-thumb">
-            <img src="https://images.unsplash.com/photo-1666886573203-ddb885d42900?w=200&auto=format&fit=crop&q=80" alt="TB-500 vs TB4 syringes" />
-          </div>
-          <div class="side-info">
-            <div class="cat-label">Healing &amp; Recovery · Peptides 101</div>
-            <div class="side-title">TB-500 Vs TB4: What's The Difference?</div>
-            <div class="side-meta">8 min read · May 2026</div>
-          </div>
-        </div>
-        <div class="side-article">
-          <div class="side-thumb">
-            <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=200&auto=format&fit=crop&q=80" alt="Wolverine Stack BPC-157 TB-500" />
-          </div>
-          <div class="side-info">
-            <div class="cat-label">Healing &amp; Recovery · Resource</div>
-            <div class="side-title">Wolverine Stack Explained: A Beginner's Guide To BPC-157 + TB-500</div>
-            <div class="side-meta">11 min read · May 2026</div>
-          </div>
-        </div>
-        <div class="side-article">
-          <div class="side-thumb">
-            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=200&auto=format&fit=crop&q=80" alt="Peptide cloudiness lab" />
-          </div>
-          <div class="side-info">
-            <div class="cat-label">Peptides 101 · Resource</div>
-            <div class="side-title">Peptide Cloudiness Explained: Why Clarity Doesn't Always Mean Quality</div>
-            <div class="side-meta">6 min read · Apr 2026</div>
-          </div>
-        </div>
-        <div class="side-article">
-          <div class="side-thumb">
-            <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=200&auto=format&fit=crop&q=80" alt="Certificate of Analysis COA peptides" />
-          </div>
-          <div class="side-info">
-            <div class="cat-label">Peptides 101 · Resource</div>
-            <div class="side-title">Certificate Of Analysis (COA) For Peptides: What It Is &amp; Why It Matters</div>
-            <div class="side-meta">9 min read · Apr 2026</div>
-          </div>
-        </div>
+    <!-- Editorial banner: horizontal image + content -->
+    <a href="#" class="feature-banner">
+      <div class="feature-banner-img">
+        <img src="https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=900&auto=format&fit=crop&q=80" alt="Orforglipron GLP-1 oral pill" />
       </div>
+      <div class="feature-banner-body">
+        <div class="feature-eyebrow"><span class="tag">Weight Loss</span></div>
+        <h2 class="feature-banner-title">Orforglipron: The Oral GLP-1 Pill That Might Kill the Needle</h2>
+        <p class="feature-banner-excerpt">For the first time, a non-peptide GLP-1 receptor agonist is showing weight loss results comparable to injectable semaglutide — without a single injection.</p>
+        <div class="feature-banner-meta">
+          <span>📖 12 min read</span>
+          <span>·</span>
+          <span>May 2026</span>
+          <span>·</span>
+          <span>Russel B.</span>
+        </div>
+        <span class="read-more">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- 3 equal sub-cards -->
+    <div class="feature-sub-grid">
+      <a href="#" class="feature-sub-card">
+        <div class="fscard-img">
+          <img src="https://images.unsplash.com/photo-1666886573203-ddb885d42900?w=500&auto=format&fit=crop&q=80" alt="TB-500 vs TB4" />
+        </div>
+        <div class="fscard-body">
+          <div class="cat-label">Healing &amp; Recovery · Peptides 101</div>
+          <div class="fscard-title">TB-500 Vs TB4: What's The Difference?</div>
+          <div class="fscard-meta">8 min read · May 2026</div>
+        </div>
+      </a>
+      <a href="#" class="feature-sub-card">
+        <div class="fscard-img">
+          <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=500&auto=format&fit=crop&q=80" alt="Wolverine Stack BPC-157 TB-500" />
+        </div>
+        <div class="fscard-body">
+          <div class="cat-label">Healing &amp; Recovery · Resource</div>
+          <div class="fscard-title">Wolverine Stack Explained: A Beginner's Guide To BPC-157 + TB-500</div>
+          <div class="fscard-meta">11 min read · May 2026</div>
+        </div>
+      </a>
+      <a href="#" class="feature-sub-card">
+        <div class="fscard-img">
+          <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=500&auto=format&fit=crop&q=80" alt="Peptide cloudiness lab" />
+        </div>
+        <div class="fscard-body">
+          <div class="cat-label">Peptides 101 · Resource</div>
+          <div class="fscard-title">Peptide Cloudiness Explained: Why Clarity Doesn't Always Mean Quality</div>
+          <div class="fscard-meta">6 min read · Apr 2026</div>
+        </div>
+      </a>
     </div>
+
   </div>
 </section>
 
 <!-- ═══════════════════════ TRENDING NOW ════════════════════════ -->
-
 <section class="trending">
   <div class="container">
     <div class="section-header">
@@ -963,71 +948,54 @@
       <a href="#" class="btn-outline">View All Articles →</a>
     </div>
 
-    <div class="trending-grid">
-      <!-- Main trending -->
-      <div class="trending-main">
-        <div class="tm-img">
-          <img src="https://plus.unsplash.com/premium_photo-1744283234275-fa597352b8cb?w=900&auto=format&fit=crop&q=80" alt="Injectable peptide stacking syringes" />
+    <!-- 2×2 ranked image grid -->
+    <div class="trending-rank-grid">
+      <a href="#" class="rank-card">
+        <div class="rank-card-img">
+          <img src="https://plus.unsplash.com/premium_photo-1744283234275-fa597352b8cb?w=700&auto=format&fit=crop&q=80" alt="Injectable peptide stacking" />
+          <div class="rank-badge">01</div>
         </div>
-        <div class="tm-body">
-          <div class="tm-cats">
-            <span class="cat-label">Peptides 101</span>
-            <span style="color:var(--muted); font-size:10px;">·</span>
-            <span class="cat-label">Resource</span>
-          </div>
-          <h3 class="tm-title">Injectable Peptide Stacking: A Beginner's Guide To Benefits, Risks &amp; How It Works</h3>
-          <p class="tm-excerpt">Combining peptides can amplify results — but only when done correctly. This guide covers synergistic stacks, timing windows, and the safety considerations beginners miss.</p>
-          <div class="tm-meta">
-            <span>March 2026</span>
-            <a href="#" class="read-more" style="margin-top:0;">Read Article →</a>
-          </div>
+        <div class="rank-card-body">
+          <div class="rank-card-cats"><span class="cat-label">Peptides 101 · Resource</span></div>
+          <div class="rank-card-title">Injectable Peptide Stacking: A Beginner's Guide To Benefits, Risks &amp; How It Works</div>
+          <div class="rank-card-meta"><span>March 2026</span><span>·</span><span>15 min read</span></div>
         </div>
-      </div>
-
-      <!-- Trending side list -->
-      <div class="trending-side">
-        <div class="trending-side-item">
-          <div class="tsi-thumb">
-            <img src="https://plus.unsplash.com/premium_photo-1661398306525-a08b5e210ad8?w=200&auto=format&fit=crop&q=80" alt="Retatrutide weight loss" />
-          </div>
-          <div>
-            <div class="cat-label">Peptides 101 · Weight Loss</div>
-            <div class="tsi-title">Retatrutide Peptide: The Next-Generation Weight Loss Breakthrough</div>
-            <div class="tsi-meta">10 min read · March 2026</div>
-          </div>
+      </a>
+      <a href="#" class="rank-card">
+        <div class="rank-card-img">
+          <img src="https://plus.unsplash.com/premium_photo-1661398306525-a08b5e210ad8?w=700&auto=format&fit=crop&q=80" alt="Retatrutide weight loss" />
+          <div class="rank-badge">02</div>
         </div>
-        <div class="trending-side-item">
-          <div class="tsi-thumb">
-            <img src="https://images.unsplash.com/photo-1598449356475-b9f71db7d847?w=200&auto=format&fit=crop&q=80" alt="Semaglutide injection" />
-          </div>
-          <div>
-            <div class="cat-label">Peptides 101 · Weight Loss</div>
-            <div class="tsi-title">Semaglutide: The Diabetes Drug That Became Hollywood's Worst-Kept Secret</div>
-            <div class="tsi-meta">13 min read · Feb 2026</div>
-          </div>
+        <div class="rank-card-body">
+          <div class="rank-card-cats"><span class="cat-label">Peptides 101 · Weight Loss</span></div>
+          <div class="rank-card-title">Retatrutide Peptide: The Next-Generation Weight Loss Breakthrough</div>
+          <div class="rank-card-meta"><span>March 2026</span><span>·</span><span>10 min read</span></div>
         </div>
-        <div class="trending-side-item">
-          <div class="tsi-thumb">
-            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=200&auto=format&fit=crop&q=80" alt="Ozempic face weight loss" />
-          </div>
-          <div>
-            <div class="cat-label">Weight Loss</div>
-            <div class="tsi-title">Ozempic Face: When Your Weight Loss Drug Gives You The Facial Structure Of A Medieval Peasant</div>
-            <div class="tsi-meta">8 min read · Dec 2025</div>
-          </div>
+      </a>
+      <a href="#" class="rank-card">
+        <div class="rank-card-img">
+          <img src="https://images.unsplash.com/photo-1598449356475-b9f71db7d847?w=700&auto=format&fit=crop&q=80" alt="Semaglutide injection" />
+          <div class="rank-badge">03</div>
         </div>
-        <div class="trending-side-item">
-          <div class="tsi-thumb">
-            <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=200&auto=format&fit=crop&q=80" alt="Ipamorelin growth hormone" />
-          </div>
-          <div>
-            <div class="cat-label">Muscle &amp; Fitness · Peptides 101</div>
-            <div class="tsi-title">Ipamorelin: The Growth Hormone Peptide That Won't Destroy Your Organs</div>
-            <div class="tsi-meta">10 min read · Nov 2025</div>
-          </div>
+        <div class="rank-card-body">
+          <div class="rank-card-cats"><span class="cat-label">Peptides 101 · Weight Loss</span></div>
+          <div class="rank-card-title">Semaglutide: The Diabetes Drug That Became Hollywood's Worst-Kept Secret</div>
+          <div class="rank-card-meta"><span>Feb 2026</span><span>·</span><span>13 min read</span></div>
         </div>
-      </div>
+      </a>
+      <a href="#" class="rank-card">
+        <div class="rank-card-img">
+          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=700&auto=format&fit=crop&q=80" alt="Ozempic face" />
+          <div class="rank-badge">04</div>
+        </div>
+        <div class="rank-card-body">
+          <div class="rank-card-cats"><span class="cat-label">Weight Loss</span></div>
+          <div class="rank-card-title">Ozempic Face: When Your Weight Loss Drug Gives You The Facial Structure Of A Medieval Peasant</div>
+          <div class="rank-card-meta"><span>Dec 2025</span><span>·</span><span>8 min read</span></div>
+        </div>
+      </a>
     </div>
+
   </div>
 </section>
 
