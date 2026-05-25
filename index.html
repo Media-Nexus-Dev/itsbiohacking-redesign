@@ -119,14 +119,6 @@
       font-size: 13px; font-family: 'Inter', sans-serif; color: var(--navy); width: 100%;
     }
     .nav-search-field input::placeholder { color: #94A3B8; }
-    .nav-calc-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 14px; border: 1.5px solid var(--green);
-      border-radius: 8px; font-size: 12px; font-weight: 700;
-      color: var(--green); background: transparent; cursor: pointer;
-      transition: all .15s; white-space: nowrap; text-decoration: none;
-    }
-    .nav-calc-btn:hover { background: var(--green); color: #fff; }
     .btn-nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 9px 18px; background: var(--green); color: #fff;
@@ -559,7 +551,6 @@
       /* Nav top — collapse search field */
       .nav-search-field { display: none; }
       .nav-hamburger { display: flex; }
-      .nav-calc-btn { display: none; }
 
       /* Hero */
       .hero-section { min-height: auto; padding: 60px 0 52px; }
@@ -752,45 +743,6 @@
       .footer-bottom { text-align: center; }
     }
 
-    /* ── Peptide Calculator (mini) ──────────────────────────────── */
-    .peptide-calc-section { background: #fff; padding: 64px 0; border-top: 1px solid var(--border); }
-    .pcm-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    @media (max-width: 860px) { .pcm-wrap { grid-template-columns: 1fr; gap: 32px; } }
-    /* Left side */
-    .pcm-title { font-family: 'Poppins', sans-serif; font-size: clamp(22px, 2.8vw, 30px); font-weight: 800; color: var(--navy); margin-bottom: 12px; }
-    .pcm-title span { color: var(--green); }
-    .pcm-desc { font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 24px; }
-    .pcm-desc a { color: var(--green); font-weight: 600; text-decoration: underline; }
-    .pcm-steps-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
-    .pcm-steps-head::before { content: ''; display: block; width: 16px; height: 2px; background: var(--green); border-radius: 2px; }
-    .pcm-steps { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 10px; }
-    .pcm-steps li { font-size: 14px; color: #374151; display: flex; gap: 8px; align-items: flex-start; }
-    .pcm-steps li .pcm-step-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .pcm-full-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--green); border: 1.5px solid var(--green); padding: 9px 18px; border-radius: 8px; transition: all .15s; }
-    .pcm-full-link:hover { background: var(--green); color: #fff; }
-    /* Right side — card */
-    .pcm-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: 16px; padding: 28px 28px 24px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
-    .pcm-card-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
-    .pcm-card-sub { font-size: 13px; color: #64748B; margin-bottom: 22px; }
-    .pcm-field { margin-bottom: 16px; }
-    .pcm-field label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 7px; }
-    .pcm-input-row { display: flex; gap: 0; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; background: #fff; transition: border-color .15s; }
-    .pcm-input-row:focus-within { border-color: var(--green); }
-    .pcm-input-row input { flex: 1; border: none; outline: none; padding: 10px 14px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--navy); background: transparent; min-width: 0; }
-    .pcm-input-row select { border: none; border-left: 1.5px solid var(--border); outline: none; padding: 10px 12px; font-size: 13px; font-weight: 700; color: #374151; background: #F8FAFC; cursor: pointer; font-family: 'Inter', sans-serif; }
-    .pcm-solo-input { width: 100%; border: 1.5px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--navy); outline: none; background: #fff; transition: border-color .15s; box-sizing: border-box; }
-    .pcm-solo-input:focus { border-color: var(--green); }
-    .pcm-error { display: none; font-size: 13px; color: #DC2626; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-weight: 600; }
-    .pcm-error.show { display: block; }
-    .pcm-results { display: none; background: var(--green-light); border: 1px solid #BBF7D0; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
-    .pcm-results.show { display: block; }
-    .pcm-result-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13px; }
-    .pcm-result-row:not(:last-child) { border-bottom: 1px solid rgba(29,107,62,.1); }
-    .pcm-result-row span { color: #166534; }
-    .pcm-result-row strong { color: var(--navy); font-weight: 800; }
-    .pcm-result-row.highlight strong { color: var(--green); font-size: 16px; }
-    .pcm-btn { width: 100%; padding: 13px; background: var(--green); color: #fff; border: none; border-radius: 9px; font-size: 15px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; transition: background .15s; letter-spacing: .01em; }
-    .pcm-btn:hover { background: var(--green-dark); }
   </style>
 </head>
 <body>
@@ -830,7 +782,6 @@
         <span>🔍</span>
         <input type="text" placeholder="Search peptides, protocols..." />
       </div>
-      <a href="#peptide-calculator" class="nav-calc-btn">🧮 Peptide Calculator</a>
       <a href="#newsletter" class="btn-nav-cta">
         <span>Subscribe Free</span> →
       </a>
@@ -849,7 +800,6 @@
     <a href="#">Muscle & Fitness</a>
     <a href="#">Longevity</a>
     <a href="#">Resources</a>
-    <a href="#peptide-calculator">🧮 Peptide Calculator</a>
     <a href="#newsletter" class="drawer-cta">Subscribe Free →</a>
   </div>
   <script>
@@ -1246,109 +1196,6 @@
     </div>
   </div>
 </section>
-
-<!-- ══════════════════════ PEPTIDE CALCULATOR ════════════════════ -->
-<section class="peptide-calc-section" id="peptide-calculator">
-  <div class="container">
-    <div class="pcm-wrap">
-
-      <!-- Left: description + steps -->
-      <div class="pcm-left">
-        <h2 class="pcm-title">🧮 Create Your Own <span>Protocol</span></h2>
-        <p class="pcm-desc">Need a custom guide? <a href="#">Request one for free</a>. Or use our calculator to find exact injection volumes.</p>
-        <div class="pcm-steps-head">Calculator Steps</div>
-        <ul class="pcm-steps">
-          <li><span class="pcm-step-num">1</span>Enter the total peptide amount (mg or mcg).</li>
-          <li><span class="pcm-step-num">2</span>Specify the BAC water volume (mL).</li>
-          <li><span class="pcm-step-num">3</span>Enter your target dose per injection.</li>
-          <li><span class="pcm-step-num">4</span>Click Calculate to see volume and total doses.</li>
-        </ul>
-        <a href="peptide-calculator.html" class="pcm-full-link">Open Full Calculator →</a>
-      </div>
-
-      <!-- Right: minimal form -->
-      <div class="pcm-right">
-        <div class="pcm-card">
-          <div class="pcm-card-title">Peptide Reconstitution Calculator</div>
-          <div class="pcm-card-sub">Enter your peptide details. Use mg or mcg as needed.</div>
-
-          <div class="pcm-field">
-            <label for="pcm-peptide">Peptide Amount:</label>
-            <div class="pcm-input-row">
-              <input type="number" id="pcm-peptide" placeholder="e.g., 5 or 5000" min="0" step="any">
-              <select id="pcm-peptide-unit">
-                <option value="mg">mg</option>
-                <option value="mcg">mcg</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="pcm-field">
-            <label for="pcm-water">BAC Water (mL):</label>
-            <input type="number" id="pcm-water" class="pcm-solo-input" placeholder="e.g., 2" min="0" step="any">
-          </div>
-
-          <div class="pcm-field">
-            <label for="pcm-dose">Desired Dose:</label>
-            <div class="pcm-input-row">
-              <input type="number" id="pcm-dose" placeholder="e.g., 0.25 or 250" min="0" step="any">
-              <select id="pcm-dose-unit">
-                <option value="mcg">mcg</option>
-                <option value="mg">mg</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="pcm-error" id="pcm-error"></div>
-          <div class="pcm-results" id="pcm-results"></div>
-
-          <button class="pcm-btn" onclick="pcmCalc()">Calculate</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<script>
-function pcmCalc() {
-  var peptideVal  = parseFloat(document.getElementById('pcm-peptide').value);
-  var peptideUnit = document.getElementById('pcm-peptide-unit').value;
-  var waterVal    = parseFloat(document.getElementById('pcm-water').value);
-  var doseVal     = parseFloat(document.getElementById('pcm-dose').value);
-  var doseUnit    = document.getElementById('pcm-dose-unit').value;
-  var errEl       = document.getElementById('pcm-error');
-  var resEl       = document.getElementById('pcm-results');
-
-  errEl.classList.remove('show');
-  resEl.classList.remove('show');
-
-  var pa = peptideUnit === 'mcg' ? peptideVal / 1000 : peptideVal;
-  var dd = doseUnit    === 'mcg' ? doseVal    / 1000 : doseVal;
-  var wv = waterVal;
-
-  if (isNaN(pa) || isNaN(wv) || isNaN(dd) || pa <= 0 || wv <= 0 || dd <= 0) {
-    errEl.textContent = 'Please fill in all fields with valid positive values.';
-    errEl.classList.add('show'); return;
-  }
-  if (dd > pa) {
-    errEl.textContent = 'Desired dose cannot exceed total peptide amount.';
-    errEl.classList.add('show'); return;
-  }
-
-  var conc       = pa / wv;
-  var injVol     = dd / conc;
-  var units      = Math.round(injVol * 100 * 10) / 10;
-  var totalDoses = Math.floor(pa / dd);
-  var concDisp   = conc >= 1 ? conc.toFixed(2) : conc.toFixed(3);
-
-  resEl.innerHTML =
-    '<div class="pcm-result-row"><span>Concentration</span><strong>' + concDisp + ' mg/ml</strong></div>' +
-    '<div class="pcm-result-row"><span>Injection Volume</span><strong>' + injVol.toFixed(2) + ' ml</strong></div>' +
-    '<div class="pcm-result-row highlight"><span>Pull Syringe To</span><strong>' + units + ' units</strong></div>' +
-    '<div class="pcm-result-row"><span>Total Doses in Vial</span><strong>' + totalDoses + ' doses</strong></div>';
-  resEl.classList.add('show');
-}
-</script>
 
 <!-- ═══════════════════════ NEWSLETTER ══════════════════════════ -->
 <section class="newsletter" id="newsletter">
