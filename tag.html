@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Tag Archive — It's BioHacking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css?v=9"/>
+  <style>
+    .archive-type-badge.tag-badge { background: rgba(124,58,237,.18); color: #C4B5FD; border: 1px solid rgba(124,58,237,.3); }
+    .archive-type-badge.tag-badge .dot { background: #7C3AED; }
+    .tag-pill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag-pill-related { display: inline-block; padding: 5px 14px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .tag-pill-related:hover { background: rgba(255,255,255,.2); color: #fff; }
+    .tag-pill-related.active { background: #7C3AED; color: #fff; border-color: #7C3AED; }
+  </style>
+</head>
+<body>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner container">
+    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Research-Backed</div>
+    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg> Expert Reviewed</div>
+    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5+ Years Publishing</div>
+    <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg> <span class="count">200+</span> Articles</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <div class="nav-top">
+    <a href="index.html" class="logo"><div class="logo-mark">🧬</div><div class="logo-text">It's <span>BioHacking</span></div></a>
+    <div class="nav-top-right">
+      <div class="nav-search-field"><span style="font-size:14px;color:#9CA3AF;">🔍</span><input type="text" placeholder="Search peptides, protocols..." /></div>
+      <a href="peptide-calculator.html" class="btn-nav-calc">🧮 Calculator</a>
+      <a href="contact.html" class="btn-nav-cta">Contact Us</a>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="peptides-101.html">Peptides 101</a>
+    <a href="weight-loss.html">Weight Loss</a>
+    <a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a>
+    <a href="healing-recovery.html">Healing &amp; Recovery</a>
+    <a href="muscle-fitness.html">Muscle &amp; Fitness</a>
+    <a href="longevity.html">Longevity</a>
+    <a href="resources.html">Resources</a>
+    <a href="all-posts.html">All Posts</a>
+    <a href="contact.html" class="drawer-cta">Contact Us</a>
+  </div>
+  <script>document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mobileDrawer').classList.toggle('open');});</script>
+  <nav class="nav-bottom">
+    <a href="peptides-101.html">Peptides 101</a><div class="sep"></div>
+    <a href="weight-loss.html">Weight Loss</a><div class="sep"></div>
+    <a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a><div class="sep"></div>
+    <a href="healing-recovery.html">Healing &amp; Recovery</a><div class="sep"></div>
+    <a href="muscle-fitness.html">Muscle &amp; Fitness</a><div class="sep"></div>
+    <a href="longevity.html">Longevity</a><div class="sep"></div>
+    <a href="resources.html">Resources</a><div class="sep"></div>
+    <a href="all-posts.html">All Posts</a>
+  </nav>
+</div>
+
+<!-- TAG HERO -->
+<section class="archive-header">
+  <div class="container archive-header-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>›</span>
+      <a href="all-posts.html" style="color:rgba(255,255,255,.65);">Tags</a><span>›</span>
+      <span class="js-tag-name" style="color:rgba(255,255,255,.65);">Loading…</span>
+    </div>
+    <div class="archive-type-badge tag-badge"><div class="dot"></div>Tag</div>
+    <div class="archive-title-wrap">
+      <div class="archive-icon">🏷️</div>
+      <div><h1 class="archive-title">Articles tagged: <em class="js-tag-name">Loading…</em></h1></div>
+    </div>
+    <p class="archive-desc js-tag-desc">Browse all research articles, guides, and protocols tagged with this topic.</p>
+    <div class="archive-meta-row">
+      <div class="archive-stat"><strong class="js-tag-count">—</strong> articles</div>
+      <div class="archive-stat-sep"></div>
+      <div class="archive-stat">Last updated <strong>May 2026</strong></div>
+      <div class="archive-stat-sep"></div>
+      <div class="archive-stat"><strong>Peer-reviewed</strong> sources only</div>
+    </div>
+    <!-- Related tags -->
+    <div class="tag-pill-list" id="relatedTags"></div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles-section" style="background:#fff">
+  <div class="container">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px">
+      <div>
+        <div class="section-label">Tag Archive</div>
+        <h2 class="section-title">Articles Tagged: <span class="js-tag-name">…</span></h2>
+      </div>
+      <a href="all-posts.html" style="font-size:13px;font-weight:700;color:var(--green)">View All Posts →</a>
+    </div>
+    <div class="articles-grid">
+      <a class="article-card" href="articles/tb-500-vs-tb4.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1666886573203-ddb885d42900?w=600&auto=format&fit=crop" alt="TB-500 vs TB-4"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Healing &amp; Recovery</span></div>
+          <div class="ac-title">TB-500 vs. TB-4: Understanding the Difference &amp; Which Is Right for Recovery</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">11 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+      <a class="article-card" href="articles/bpc-157-dosage-guide.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&auto=format&fit=crop" alt="BPC-157"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Resources</span></div>
+          <div class="ac-title">BPC-157 Dosage Guide: Reconstitution, Injection Protocol &amp; Dosing by Goal</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">9 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+      <a class="article-card" href="articles/ipamorelin-growth-hormone.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop" alt="Ipamorelin"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Muscle &amp; Fitness</span></div>
+          <div class="ac-title">Ipamorelin: The GH Peptide With the Best Safety Profile in Its Class</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">8 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+      <a class="article-card" href="articles/ghk-cu-copper-peptide.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&auto=format&fit=crop" alt="GHK-Cu"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Anti-Aging &amp; Skin</span></div>
+          <div class="ac-title">GHK-Cu (Copper Peptide): Anti-Aging, Wound Healing &amp; Hair Growth Research</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">10 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+      <a class="article-card" href="articles/orforglipron-glp1.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&auto=format&fit=crop" alt="Orforglipron"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Weight Loss</span></div>
+          <div class="ac-title">Orforglipron: The Oral GLP-1 That Could Replace Semaglutide Injections</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">7 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+      <a class="article-card" href="articles/peptide-classification.html">
+        <div class="ac-image"><img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&auto=format&fit=crop" alt="Peptide Classification"/></div>
+        <div class="ac-body">
+          <div class="ac-cats"><span class="cat-label">Peptides 101</span></div>
+          <div class="ac-title">Peptide Classification Explained: Types, Functions &amp; What the Research Says</div>
+          <div class="ac-meta"><div class="ac-author-mini"><div class="ac-avatar-sm">R</div><span>Russel B.</span></div><span class="ac-sep">&#183;</span><span class="ac-read-time">12 min read</span><span class="ac-read">Read &#8594;</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><div class="logo-mark" style="width:28px;height:28px;font-size:13px;">🧬</div><div class="footer-logo-text">It's <span>BioHacking</span></div></div>
+        <p>Evidence-based peptide research and education for science-minded individuals optimizing their biology responsibly.</p>
+        <div class="footer-social"><div class="social-btn">𝕏</div><div class="social-btn">in</div><div class="social-btn">f</div></div>
+      </div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="peptides-101.html">Peptides 101</a></li><li><a href="weight-loss.html">Weight Loss</a></li><li><a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a></li><li><a href="healing-recovery.html">Healing &amp; Recovery</a></li><li><a href="muscle-fitness.html">Muscle &amp; Fitness</a></li><li><a href="longevity.html">Longevity</a></li><li><a href="resources.html">Resources</a></li></ul></div>
+      <div class="footer-col"><h4>Learn</h4><ul><li><a href="#">Beginner's Guide</a></li><li><a href="#">Peptides A–Z Index</a></li><li><a href="#">Protocols Library</a></li><li><a href="#">How to Inject Peptides</a></li><li><a href="#">Glossary</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Write for Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 It's BioHacking. For educational purposes only. Not medical advice.</p><div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a></div></div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var tag = params.get('tag') || 'Peptides';
+
+  // Inject tag name into all .js-tag-name elements
+  document.querySelectorAll('.js-tag-name').forEach(function(el) {
+    el.textContent = tag;
+  });
+
+  // Update page title
+  document.title = '#' + tag + ' — It\'s BioHacking';
+
+  // Update article count (mock)
+  var countEl = document.querySelector('.js-tag-count');
+  if (countEl) countEl.textContent = Math.floor(Math.random() * 8) + 3;
+
+  // Related tags (contextual based on current tag)
+  var relatedMap = {
+    'TB-500': ['TB-4','Thymosin Beta-4','Healing Peptides','Injury Recovery','Tissue Repair','BPC-157'],
+    'TB-4':   ['TB-500','Thymosin Beta-4','Healing Peptides','Tissue Repair'],
+    'BPC-157':['Healing Peptides','Gut Health','Injury Recovery','GHRP','TB-500'],
+    'Ipamorelin':['GHRP','Growth Hormone','Muscle Growth','CJC-1295','Peptides'],
+    'GHK-Cu': ['Copper Peptide','Anti-Aging','Skin Health','Hair Growth','Collagen'],
+    'Semaglutide':['GLP-1','Weight Loss','Orforglipron','Tirzepatide','Diabetes'],
+    'Orforglipron':['GLP-1','Weight Loss','Semaglutide','Tirzepatide'],
+  };
+  var related = relatedMap[tag] || ['Peptides','Research','Biohacking','Protocols','Anti-Aging'];
+  var container = document.getElementById('relatedTags');
+  related.forEach(function(t) {
+    var a = document.createElement('a');
+    a.className = 'tag-pill-related' + (t === tag ? ' active' : '');
+    a.textContent = '#' + t;
+    a.href = 'tag.html?tag=' + encodeURIComponent(t);
+    container.appendChild(a);
+  });
+})();
+</script>
+
+</body>
+</html>
