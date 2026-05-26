@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weight Loss — It's BioHacking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E293B; background: #F6F9FF;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --green:       #1D6B3E;
+      --green-dark:  #145C31;
+      --green-light: #E8F5EE;
+      --green-mid:   #34A85A;
+      --navy:        #0B1929;
+      --text:        #374151;
+      --muted:       #9CA3AF;
+      --border:      #E5EAF2;
+      --bg:          #F6F9FF;
+      --max:         1200px;
+      --radius:      10px;
+    }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--green); padding: 3px 10px; border-radius: 4px; }
+    .cat-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); }
+    .section-label { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+    .section-label::before { content: ''; display: block; width: 16px; height: 2px; background: var(--green); border-radius: 2px; }
+
+    /* ── Trust Bar ── */
+    .trust-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 9px 0; }
+    .trust-inner { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: #374151; }
+    .trust-item svg { color: var(--green); flex-shrink: 0; }
+    .trust-item span.count { font-weight: 800; color: var(--green); }
+
+    /* ── Nav ── */
+    .nav-wrapper { position: sticky; top: 0; z-index: 200; background: #fff; border-bottom: 1px solid var(--border); box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .nav-top { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: var(--max); margin: 0 auto; padding: 0 24px; border-bottom: 1px solid var(--border); }
+    .logo { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .logo-mark { width: 36px; height: 36px; border-radius: 8px; background: linear-gradient(135deg, var(--green), var(--green-mid)); display: flex; align-items: center; justify-content: center; font-size: 17px; }
+    .logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
+    .logo-text span { color: var(--green); }
+    .nav-top-right { display: flex; align-items: center; gap: 10px; }
+    .nav-search-field { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 7px 14px; transition: border-color .15s; width: 260px; }
+    .nav-search-field:focus-within { border-color: var(--green); }
+    .nav-search-field input { border: none; outline: none; background: transparent; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--navy); width: 100%; }
+    .nav-search-field input::placeholder { color: #94A3B8; }
+    .btn-nav-cta { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; background: var(--green); color: #fff; border-radius: 7px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; transition: background .15s; }
+    .btn-nav-cta:hover { background: var(--green-dark); }
+    .nav-bottom { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; height: 44px; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+    .nav-bottom::-webkit-scrollbar { display: none; }
+    .nav-bottom a { white-space: nowrap; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; color: var(--text); letter-spacing: .04em; text-transform: uppercase; transition: all .15s; flex-shrink: 0; }
+    .nav-bottom a:hover, .nav-bottom a.active { color: var(--green); background: var(--green-light); }
+    .nav-bottom .sep { width: 1px; height: 14px; background: var(--border); margin: 0 4px; flex-shrink: 0; }
+    .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: none; border: 1.5px solid var(--border); border-radius: 7px; padding: 7px; flex-shrink: 0; }
+    .nav-hamburger span { display: block; width: 100%; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-drawer { display: none; flex-direction: column; background: #fff; border-top: 1px solid var(--border); padding: 8px 20px 20px; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { padding: 13px 4px; font-size: 14px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); transition: color .15s; }
+    .mobile-drawer a:last-of-type { border-bottom: none; }
+    .mobile-drawer a:hover { color: var(--green); }
+    .mobile-drawer .drawer-cta { margin-top: 12px; padding: 13px 20px; text-align: center; background: var(--green); color: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; }
+
+    /* ══════════════════════════════════
+       ARCHIVE HEADER
+    ══════════════════════════════════ */
+    .archive-header {
+      background: linear-gradient(160deg, #081520 0%, #0D2336 50%, #07321F 100%);
+      position: relative; overflow: hidden;
+      padding: 56px 0 52px;
+    }
+    .archive-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+    .archive-header::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 60% at 50% 100%, rgba(29,107,62,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .archive-header-inner { position: relative; z-index: 1; }
+
+    /* Breadcrumb */
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,.4); margin-bottom: 20px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,.5); transition: color .15s; }
+    .breadcrumb a:hover { color: #6EE7B7; }
+    .breadcrumb span { color: rgba(255,255,255,.25); }
+
+    /* Archive type variants */
+    .archive-type-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .archive-type-badge.category { background: rgba(29,107,62,.2); border: 1px solid rgba(29,107,62,.4); color: #6EE7B7; }
+    .archive-type-badge.tag      { background: rgba(99,102,241,.2); border: 1px solid rgba(99,102,241,.4); color: #A5B4FC; }
+    .archive-type-badge.date     { background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.35); color: #FCD34D; }
+    .archive-type-badge.all      { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.7); }
+    .archive-type-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+    .archive-title-wrap { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 14px; }
+    .archive-icon {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .archive-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800; color: #fff; line-height: 1.1;
+    }
+    .archive-title em { color: #6EE7B7; font-style: normal; }
+    .archive-desc { font-size: 15px; color: #94A3B8; max-width: 580px; line-height: 1.7; margin-bottom: 24px; }
+
+    /* Archive meta row */
+    .archive-meta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .archive-stat { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.5); font-weight: 500; }
+    .archive-stat strong { color: #fff; font-weight: 700; }
+    .archive-stat-sep { width: 1px; height: 14px; background: rgba(255,255,255,.15); }
+
+    /* ══════════════════════════════════
+       FILTER BAR
+    ══════════════════════════════════ */
+    .filter-bar {
+      background: #fff; border-bottom: 1px solid var(--border);
+      padding: 0; position: sticky; top: 108px; z-index: 100;
+    }
+    .filter-bar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px; gap: 16px;
+    }
+    .filter-tabs { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+    .filter-tab {
+      white-space: nowrap; padding: 6px 14px; border-radius: 6px;
+      font-size: 12px; font-weight: 700; color: var(--muted);
+      cursor: pointer; transition: all .15s; flex-shrink: 0;
+      border: 1.5px solid transparent; background: transparent;
+    }
+    .filter-tab:hover { color: var(--green); background: var(--green-light); }
+    .filter-tab.active { color: var(--green); background: var(--green-light); border-color: rgba(29,107,62,.2); }
+    .filter-tab .tab-count { font-size: 10px; font-weight: 700; color: var(--muted); background: var(--bg); padding: 1px 6px; border-radius: 999px; margin-left: 4px; }
+    .filter-tab.active .tab-count { background: rgba(29,107,62,.12); color: var(--green); }
+    .filter-divider { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+    .sort-select-wrap { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .sort-label { font-size: 12px; color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .sort-select {
+      padding: 6px 28px 6px 10px; border: 1.5px solid var(--border);
+      border-radius: 7px; font-size: 12px; font-weight: 600;
+      color: var(--text); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 10px center;
+      -webkit-appearance: none; cursor: pointer; outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .sort-select:focus { border-color: var(--green); }
+
+    /* ══════════════════════════════════
+       MAIN CONTENT LAYOUT
+    ══════════════════════════════════ */
+    .archive-body { padding: 48px 0 64px; }
+    .archive-layout { display: grid; grid-template-columns: 1fr 300px; gap: 32px; align-items: start; }
+
+    /* ── Article Grid ── */
+    .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .article-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      cursor: pointer; transition: all .2s;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+    }
+    .article-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(0,0,0,.09); transform: translateY(-3px); }
+
+    .article-card-img { height: 180px; overflow: hidden; position: relative; }
+    .article-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+    .article-card:hover .article-card-img img { transform: scale(1.04); }
+    .article-card-img .card-tag { position: absolute; top: 10px; left: 10px; }
+
+    .article-card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+    .article-card-cats { margin-bottom: 6px; }
+    .article-card-title { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 8px; flex: 1; }
+    .article-card-excerpt { font-size: 12px; color: var(--text); line-height: 1.6; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .article-card-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-top: auto; }
+    .article-card-meta .read-time { display: flex; align-items: center; gap: 4px; }
+
+    /* Featured card (first item — full width) */
+    .article-card.featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+    .article-card.featured .article-card-img { width: 42%; height: auto; min-height: 240px; flex-shrink: 0; }
+    .article-card.featured .article-card-body { padding: 28px 32px; justify-content: center; }
+    .article-card.featured .article-card-title { font-size: 22px; line-height: 1.25; margin-bottom: 10px; }
+    .article-card.featured .article-card-excerpt { -webkit-line-clamp: 3; font-size: 13px; }
+
+    /* Results count */
+    .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .results-count { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .results-count strong { color: var(--navy); }
+    .view-toggle { display: flex; gap: 4px; }
+    .view-btn { width: 30px; height: 30px; border-radius: 6px; border: 1.5px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .15s; color: var(--muted); font-size: 13px; }
+    .view-btn.active { border-color: var(--green); color: var(--green); background: var(--green-light); }
+
+    /* Pagination */
+    .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 40px; }
+    .page-btn { min-width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--text); cursor: pointer; transition: all .15s; padding: 0 6px; }
+    .page-btn:hover { border-color: var(--green); color: var(--green); }
+    .page-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+    .page-btn.disabled { opacity: .4; cursor: default; }
+    .page-dots { color: var(--muted); font-size: 13px; padding: 0 4px; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 172px; }
+    .sidebar-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .sidebar-card-head { padding: 14px 18px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .sidebar-card-title { font-size: 13px; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+    .sidebar-card-link { font-size: 11px; font-weight: 700; color: var(--green); }
+    .sidebar-card-body { padding: 14px 18px; }
+
+    /* Search in sidebar */
+    .sidebar-search { display: flex; align-items: center; gap: 8px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 12px; transition: border-color .15s; }
+    .sidebar-search:focus-within { border-color: var(--green); }
+    .sidebar-search input { flex: 1; border: none; outline: none; background: transparent; font-size: 13px; font-family: 'Inter', sans-serif; color: var(--navy); }
+    .sidebar-search input::placeholder { color: #94A3B8; }
+
+    /* Categories list */
+    .sidebar-cats { list-style: none; display: flex; flex-direction: column; }
+    .sidebar-cat { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: color .15s; }
+    .sidebar-cat:last-child { border-bottom: none; }
+    .sidebar-cat:hover .sc-name { color: var(--green); }
+    .sidebar-cat-left { display: flex; align-items: center; gap: 10px; }
+    .sc-icon { width: 30px; height: 30px; border-radius: 7px; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .sc-name { font-size: 13px; font-weight: 600; color: var(--text); transition: color .15s; }
+    .sc-name.active { color: var(--green); }
+    .sc-count { font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-light); padding: 2px 7px; border-radius: 999px; }
+
+    /* Tags cloud */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag-pill { padding: 5px 12px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 999px; font-size: 11px; font-weight: 600; color: var(--text); cursor: pointer; transition: all .15s; text-decoration: none; display: inline-block; }
+    .tag-pill:hover { border-color: var(--green); color: var(--green); background: var(--green-light); }
+    .tag-pill.active { border-color: var(--green); color: #fff; background: var(--green); }
+
+    /* Popular posts */
+    .popular-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .popular-item { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+    .popular-item:hover .pi-title { color: var(--green); }
+    .pi-num { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: #E5EAF2; line-height: 1; flex-shrink: 0; width: 24px; text-align: center; }
+    .pi-thumb { width: 60px; height: 48px; border-radius: 7px; overflow: hidden; flex-shrink: 0; }
+    .pi-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .pi-info { flex: 1; }
+    .pi-title { font-size: 12px; font-weight: 700; color: var(--navy); line-height: 1.35; transition: color .15s; }
+    .pi-meta { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Archive Types Demo Strip */
+    .archive-types-demo {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .archive-type-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: background .15s;
+    }
+    .archive-type-item:last-child { border-bottom: none; }
+    .archive-type-item:hover { background: var(--bg); }
+    .ati-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .ati-icon.cat  { background: var(--green-light); }
+    .ati-icon.tag  { background: #EEF2FF; }
+    .ati-icon.date { background: #FEF3C7; }
+    .ati-icon.all  { background: #F0F9FF; }
+    .ati-label { font-size: 12px; font-weight: 600; color: var(--text); flex: 1; }
+    .ati-count { font-size: 11px; color: var(--muted); }
+
+    /* ══════════════════════════════════
+       NEWSLETTER STRIP
+    ══════════════════════════════════ */
+    .nl-strip {
+      background: linear-gradient(135deg, #081520 0%, #07321F 100%);
+      padding: 48px 0; border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .nl-strip-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .nl-strip-text h3 { font-family: 'Poppins', sans-serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .nl-strip-text p { font-size: 13px; color: #64748B; }
+    .nl-strip-form { display: flex; gap: 8px; flex: 1; max-width: 440px; }
+    .nl-input { flex: 1; padding: 11px 16px; border-radius: 7px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); color: #fff; font-size: 14px; font-family: 'Inter', sans-serif; outline: none; }
+    .nl-input::placeholder { color: #475569; }
+    .nl-btn { padding: 11px 22px; background: var(--green); color: #fff; border: none; border-radius: 7px; font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap; font-family: 'Inter', sans-serif; }
+    .nl-btn:hover { background: var(--green-dark); }
+
+    /* ── Footer ── */
+    footer { background: #0B1929; padding: 48px 0 20px; border-top: 1px solid rgba(255,255,255,.05); }
+    .footer-grid { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+    .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .footer-logo-text { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 16px; color: #fff; }
+    .footer-logo-text span { color: #34A85A; }
+    .footer-brand p { font-size: 13px; color: #475569; line-height: 1.7; max-width: 220px; margin-bottom: 14px; }
+    .footer-social { display: flex; gap: 8px; }
+    .social-btn { width: 32px; height: 32px; border-radius: 7px; border: 1px solid rgba(255,255,255,.1); background: transparent; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #475569; cursor: pointer; transition: all .15s; }
+    .social-btn:hover { border-color: #34A85A; color: #34A85A; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #64748B; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 13px; color: #475569; transition: color .15s; }
+    .footer-col a:hover { color: #34A85A; }
+    .footer-bottom { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.05); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-bottom p { font-size: 11px; color: #334155; }
+    .footer-legal { display: flex; gap: 16px; }
+    .footer-legal a { font-size: 11px; color: #334155; transition: color .15s; }
+    .footer-legal a:hover { color: #34A85A; }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .nav-search-field { display: none; }
+      .nav-hamburger { display: flex; }
+      .archive-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; }
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-card.featured { flex-direction: column; }
+      .article-card.featured .article-card-img { width: 100%; height: 240px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .nav-top { height: 56px; padding: 0 16px; }
+      .archive-header { padding: 36px 0 32px; }
+      .archive-title { font-size: 28px; }
+      .archive-icon { width: 44px; height: 44px; font-size: 20px; }
+      .filter-bar { position: static; }
+      .filter-bar-inner { height: auto; flex-direction: column; align-items: flex-start; gap: 10px; padding: 12px 0; }
+      .sort-select-wrap { width: 100%; }
+      .sort-select { flex: 1; }
+      .article-grid { grid-template-columns: 1fr; }
+      .article-card.featured { flex-direction: column; }
+      .article-card.featured .article-card-img { width: 100%; height: 200px; }
+      .article-card.featured .article-card-body { padding: 18px; }
+      .article-card.featured .article-card-title { font-size: 18px; }
+      .sidebar { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .footer-brand { grid-column: 1 / -1; }
+      .nl-strip-inner { flex-direction: column; gap: 20px; }
+      .nl-strip-form { max-width: 100%; width: 100%; }
+      .archive-meta-row { gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .article-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .nl-strip-form { flex-direction: column; }
+      .nl-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ TRUST BAR ═══════════ -->
+<div class="trust-bar">
+  <div class="trust-inner container">
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Research-Backed
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      Expert Reviewed
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      5+ Years Publishing
+    </div>
+    <div class="trust-item">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      <span class="count">200+</span> Articles
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<div class="nav-wrapper">
+  <div class="nav-top">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">🧬</div>
+      <div class="logo-text">It's <span>BioHacking</span></div>
+    </a>
+    <div class="nav-top-right">
+      <div class="nav-search-field">
+        <span style="font-size:14px;color:#9CA3AF;">🔍</span>
+        <input type="text" placeholder="Search peptides, protocols..." />
+      </div>
+      <a href="#newsletter" class="btn-nav-cta"><span>Subscribe Free</span> →</a>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#">Peptides 101</a><a href="#">Weight Loss</a><a href="#">Anti-Aging & Skin</a>
+    <a href="#">Healing & Recovery</a><a href="#">Muscle & Fitness</a><a href="#">Longevity</a>
+    <a href="#">Resources</a><a href="#newsletter" class="drawer-cta">Subscribe Free →</a>
+  </div>
+  <script>document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mobileDrawer').classList.toggle('open');});</script>
+  <nav class="nav-bottom">
+    <a href="#">Peptides 101</a><div class="sep"></div>
+    <a href="#" class="active">Weight Loss</a><div class="sep"></div>
+    <a href="#">Anti-Aging &amp; Skin</a><div class="sep"></div>
+    <a href="#">Healing &amp; Recovery</a><div class="sep"></div>
+    <a href="#">Muscle &amp; Fitness</a><div class="sep"></div>
+    <a href="#">Longevity</a><div class="sep"></div>
+    <a href="#">Resources</a>
+  </nav>
+</div>
+
+<!-- ═══════════ ARCHIVE HEADER ═══════════ -->
+<!-- NOTE: swap the badge class + icon + title + desc for each archive type:
+     Category → class="category"  |  Tag → class="tag"  |  Date → class="date"  |  All → class="all" -->
+<section class="archive-header">
+  <div class="container archive-header-inner">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,.65);">Weight Loss</span>
+    </div>
+
+    <!-- Archive type badge -->
+    <div class="archive-type-badge category">
+      <div class="dot"></div>
+      Category
+    </div>
+
+    <!-- Title + icon -->
+    <div class="archive-title-wrap">
+      <div class="archive-icon">⚖️</div>
+      <div>
+        <h1 class="archive-title">Weight <em>Loss</em></h1>
+      </div>
+    </div>
+
+    <p class="archive-desc">Science-backed guides on GLP-1 agonists, peptide-based fat loss, metabolic health, and the protocols researchers are actually using.</p>
+
+    <div class="archive-meta-row">
+      <div class="archive-stat"><strong>24</strong> articles</div>
+      <div class="archive-stat-sep"></div>
+      <div class="archive-stat">Last updated <strong>May 2026</strong></div>
+      <div class="archive-stat-sep"></div>
+      <div class="archive-stat">Avg. <strong>11 min</strong> read</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ FILTER BAR ═══════════ -->
+<div class="filter-bar">
+  <div class="container filter-bar-inner">
+    <div class="filter-tabs">
+      <button class="filter-tab active">All <span class="tab-count">24</span></button>
+      <button class="filter-tab">GLP-1 <span class="tab-count">8</span></button>
+      <button class="filter-tab">Peptides <span class="tab-count">6</span></button>
+      <button class="filter-tab">Guides <span class="tab-count">5</span></button>
+      <button class="filter-tab">Research <span class="tab-count">5</span></button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="sort-select-wrap">
+      <span class="sort-label">Sort:</span>
+      <select class="sort-select">
+        <option>Newest First</option>
+        <option>Most Popular</option>
+        <option>A → Z</option>
+        <option>Longest Read</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ ARCHIVE BODY ═══════════ -->
+<div class="archive-body">
+  <div class="container">
+    <div class="archive-layout">
+
+      <!-- ── Article Grid ── -->
+      <div>
+        <div class="results-header">
+          <span class="results-count">Showing <strong>24</strong> articles in Weight Loss</span>
+          <div class="view-toggle">
+            <button class="view-btn active" title="Grid view">▦</button>
+            <button class="view-btn" title="List view">☰</button>
+          </div>
+        </div>
+
+        <div class="article-grid">
+
+          <!-- Featured card (first, full-width) -->
+          <a href="#" class="article-card featured">
+            <div class="article-card-img">
+              <img src="https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=800&auto=format&fit=crop&q=80" alt="Orforglipron" />
+              <span class="card-tag tag">Featured</span>
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Peptides 101 · Weight Loss</span></div>
+              <div class="article-card-title">Orforglipron: The Oral GLP-1 Pill That Might Kill the Needle — And What It Means for Peptide Research</div>
+              <div class="article-card-excerpt">For the first time, a non-peptide GLP-1 receptor agonist is showing weight loss results comparable to injectable semaglutide — without a single injection. Here's the full breakdown.</div>
+              <div class="article-card-meta">
+                <span class="read-time">📖 12 min read</span>
+                <span>·</span>
+                <span>May 2026</span>
+                <span>·</span>
+                <span>Russel B.</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Regular cards -->
+          <a href="#" class="article-card">
+            <div class="article-card-img">
+              <img src="https://plus.unsplash.com/premium_photo-1661398306525-a08b5e210ad8?w=600&auto=format&fit=crop&q=80" alt="Retatrutide" />
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Weight Loss</span></div>
+              <div class="article-card-title">Retatrutide: The Next-Generation Weight Loss Breakthrough</div>
+              <div class="article-card-excerpt">Triple agonist that targets GIP, GLP-1 and glucagon receptors simultaneously.</div>
+              <div class="article-card-meta">
+                <span>10 min read</span><span>·</span><span>March 2026</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="article-card">
+            <div class="article-card-img">
+              <img src="https://images.unsplash.com/photo-1598449356475-b9f71db7d847?w=600&auto=format&fit=crop&q=80" alt="Semaglutide" />
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Weight Loss</span></div>
+              <div class="article-card-title">Semaglutide: The Diabetes Drug That Became Hollywood's Worst-Kept Secret</div>
+              <div class="article-card-excerpt">How Ozempic went from diabetes treatment to the most talked-about weight loss drug on the planet.</div>
+              <div class="article-card-meta">
+                <span>13 min read</span><span>·</span><span>Feb 2026</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="article-card">
+            <div class="article-card-img">
+              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&auto=format&fit=crop&q=80" alt="Ozempic face" />
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Weight Loss</span></div>
+              <div class="article-card-title">Ozempic Face: When Your Weight Loss Drug Ages You 10 Years</div>
+              <div class="article-card-excerpt">Rapid fat loss from GLP-1 drugs is causing unexpected facial changes. Here's the science.</div>
+              <div class="article-card-meta">
+                <span>8 min read</span><span>·</span><span>Dec 2025</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="article-card">
+            <div class="article-card-img">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=80" alt="GLP-1 injections" />
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Weight Loss · Resource</span></div>
+              <div class="article-card-title">GLP-1 Injections Are Changing Everything — But Are They Right For You?</div>
+              <div class="article-card-excerpt">A complete guide to who should and shouldn't be using GLP-1 receptor agonists.</div>
+              <div class="article-card-meta">
+                <span>15 min read</span><span>·</span><span>Nov 2025</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="article-card">
+            <div class="article-card-img">
+              <img src="https://images.unsplash.com/photo-1606206873764-fd15e242191c?w=600&auto=format&fit=crop&q=80" alt="Peptides weight loss" />
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-cats"><span class="cat-label">Peptides 101 · Weight Loss</span></div>
+              <div class="article-card-title">Peptides For Weight Loss: The Complete Guide To Injecting Your Way To Skinny</div>
+              <div class="article-card-excerpt">Which peptides actually work for fat loss, how to stack them, and realistic expectations.</div>
+              <div class="article-card-meta">
+                <span>20 min read</span><span>·</span><span>Oct 2025</span>
+              </div>
+            </div>
+          </a>
+
+        </div><!-- /article-grid -->
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="page-btn disabled">← Prev</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <span class="page-dots">…</span>
+          <button class="page-btn">8</button>
+          <button class="page-btn">Next →</button>
+        </div>
+
+      </div><!-- /article-grid col -->
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="sidebar">
+
+        <!-- Search -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><span class="sidebar-card-title">🔍 Search Articles</span></div>
+          <div class="sidebar-card-body">
+            <div class="sidebar-search">
+              <input type="text" placeholder="Search peptides, protocols..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- Browse archive types -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><span class="sidebar-card-title">Browse By</span></div>
+          <div class="archive-types-demo">
+            <div class="archive-type-item">
+              <div class="ati-icon cat">📂</div>
+              <span class="ati-label">Categories</span>
+              <span class="ati-count">7 topics</span>
+            </div>
+            <div class="archive-type-item">
+              <div class="ati-icon tag">🏷</div>
+              <span class="ati-label">Tags</span>
+              <span class="ati-count">48 tags</span>
+            </div>
+            <div class="archive-type-item">
+              <div class="ati-icon date">📅</div>
+              <span class="ati-label">By Date</span>
+              <span class="ati-count">2023–2026</span>
+            </div>
+            <div class="archive-type-item">
+              <div class="ati-icon all">📋</div>
+              <span class="ati-label">All Articles</span>
+              <span class="ati-count">200+ posts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head">
+            <span class="sidebar-card-title">Categories</span>
+            <a href="#" class="sidebar-card-link">View all →</a>
+          </div>
+          <div class="sidebar-card-body" style="padding:6px 14px;">
+            <ul class="sidebar-cats">
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">⚖️</div><span class="sc-name active">Weight Loss</span></div>
+                <span class="sc-count">24</span>
+              </li>
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">🧬</div><span class="sc-name">Peptides 101</span></div>
+                <span class="sc-count">42</span>
+              </li>
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">💪</div><span class="sc-name">Muscle & Fitness</span></div>
+                <span class="sc-count">16</span>
+              </li>
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">⏳</div><span class="sc-name">Longevity</span></div>
+                <span class="sc-count">12</span>
+              </li>
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">🏃</div><span class="sc-name">Healing & Recovery</span></div>
+                <span class="sc-count">22</span>
+              </li>
+              <li class="sidebar-cat">
+                <div class="sidebar-cat-left"><div class="sc-icon">✨</div><span class="sc-name">Anti-Aging & Skin</span></div>
+                <span class="sc-count">14</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Popular tags -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><span class="sidebar-card-title">Popular Tags</span></div>
+          <div class="sidebar-card-body">
+            <div class="tag-cloud">
+              <a href="#" class="tag-pill active">Weight Loss</a>
+              <a href="#" class="tag-pill">GLP-1</a>
+              <a href="#" class="tag-pill">Semaglutide</a>
+              <a href="#" class="tag-pill">BPC-157</a>
+              <a href="#" class="tag-pill">Ozempic</a>
+              <a href="#" class="tag-pill">TB-500</a>
+              <a href="#" class="tag-pill">Ipamorelin</a>
+              <a href="#" class="tag-pill">GHK-Cu</a>
+              <a href="#" class="tag-pill">Peptide Stack</a>
+              <a href="#" class="tag-pill">Biohacking</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Most read -->
+        <div class="sidebar-card">
+          <div class="sidebar-card-head"><span class="sidebar-card-title">Most Read</span></div>
+          <div class="sidebar-card-body">
+            <ul class="popular-list">
+              <li class="popular-item">
+                <div class="pi-num">1</div>
+                <div class="pi-thumb"><img src="https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=160&auto=format&fit=crop&q=80" alt="" /></div>
+                <div class="pi-info">
+                  <div class="pi-title">Orforglipron: The Oral GLP-1 Pill</div>
+                  <div class="pi-meta">12 min · May 2026</div>
+                </div>
+              </li>
+              <li class="popular-item">
+                <div class="pi-num">2</div>
+                <div class="pi-thumb"><img src="https://images.unsplash.com/photo-1598449356475-b9f71db7d847?w=160&auto=format&fit=crop&q=80" alt="" /></div>
+                <div class="pi-info">
+                  <div class="pi-title">Semaglutide: Hollywood's Worst-Kept Secret</div>
+                  <div class="pi-meta">13 min · Feb 2026</div>
+                </div>
+              </li>
+              <li class="popular-item">
+                <div class="pi-num">3</div>
+                <div class="pi-thumb"><img src="https://plus.unsplash.com/premium_photo-1661398306525-a08b5e210ad8?w=160&auto=format&fit=crop&q=80" alt="" /></div>
+                <div class="pi-info">
+                  <div class="pi-title">Retatrutide: Next-Gen Weight Loss</div>
+                  <div class="pi-meta">10 min · March 2026</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </aside>
+    </div><!-- /archive-layout -->
+  </div>
+</div>
+
+<!-- ═══════════ NEWSLETTER STRIP ═══════════ -->
+<section class="nl-strip" id="newsletter">
+  <div class="container nl-strip-inner">
+    <div class="nl-strip-text">
+      <h3>The Peptide Science Weekly</h3>
+      <p>New guides and research summaries every week. Join 4,200+ readers.</p>
+    </div>
+    <div class="nl-strip-form">
+      <input class="nl-input" type="email" placeholder="Your email address" />
+      <button class="nl-btn">Subscribe Free →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-mark" style="width:28px;height:28px;font-size:13px;">🧬</div>
+          <div class="footer-logo-text">It's <span>BioHacking</span></div>
+        </div>
+        <p>Evidence-based peptide research and education for science-minded individuals.</p>
+        <div class="footer-social">
+          <div class="social-btn">𝕏</div><div class="social-btn">in</div>
+          <div class="social-btn">f</div><div class="social-btn">▶</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Peptides 101</a></li><li><a href="#">Weight Loss</a></li>
+          <li><a href="#">Anti-Aging & Skin</a></li><li><a href="#">Healing & Recovery</a></li>
+          <li><a href="#">Muscle & Fitness</a></li><li><a href="#">Longevity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">Beginner's Guide</a></li><li><a href="#">Peptides A–Z</a></li>
+          <li><a href="#">Protocols Library</a></li><li><a href="#">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li><li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 It's BioHacking. For educational purposes only. Not medical advice.</p>
+      <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
