@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "preview",
+      "name": "itsbiohacking-redesign",
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "2000"],
       "port": 2000,
