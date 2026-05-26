@@ -353,6 +353,7 @@
       background: var(--bg); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 22px 20px;
       cursor: pointer; transition: all .2s;
+      display: block; text-decoration: none; color: inherit;
     }
     .cat-card:hover { border-color: var(--green); background: var(--green-light); box-shadow: 0 6px 20px rgba(29,107,62,.08); }
     .cat-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
@@ -782,9 +783,8 @@
         <span>🔍</span>
         <input type="text" placeholder="Search peptides, protocols..." />
       </div>
-      <a href="#newsletter" class="btn-nav-cta">
-        <span>Subscribe Free</span> →
-      </a>
+      <a href="peptide-calculator.html" class="btn-nav-calc">🧮 Calculator</a>
+      <a href="contact.html" class="btn-nav-cta">Contact Us</a>
       <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -800,7 +800,8 @@
     <a href="#">Muscle & Fitness</a>
     <a href="#">Longevity</a>
     <a href="#">Resources</a>
-    <a href="#newsletter" class="drawer-cta">Subscribe Free →</a>
+    <a href="all-posts.html">All Posts</a>
+    <a href="contact.html" class="drawer-cta">Contact Us</a>
   </div>
   <script>
     document.getElementById('hamburger').addEventListener('click', function() {
@@ -822,6 +823,8 @@
     <a href="longevity.html">Longevity</a>
     <div class="sep"></div>
     <a href="resources.html">Resources</a>
+    <div class="sep"></div>
+    <a href="all-posts.html">All Posts</a>
   </nav>
 </div>
 
@@ -1032,7 +1035,7 @@
       </div>
     </div>
     <div class="cat-grid">
-      <div class="cat-card">
+      <a class="cat-card" href="weight-loss.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">⚖️</div>
           <span class="cat-count-badge">24</span>
@@ -1040,8 +1043,8 @@
         <div class="cat-name">Weight Loss</div>
         <div class="cat-desc">One area gaining significant attention in metabolic science is the study of weight loss peptides and GLP-1 agonists.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
-      <div class="cat-card">
+      </a>
+      <a class="cat-card" href="peptides-101.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">🧬</div>
           <span class="cat-count-badge">42</span>
@@ -1049,8 +1052,8 @@
         <div class="cat-name">Peptides 101</div>
         <div class="cat-desc">Peptides are short chains of amino acids that act as signaling molecules throughout the body.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
-      <div class="cat-card">
+      </a>
+      <a class="cat-card" href="muscle-fitness.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">💪</div>
           <span class="cat-count-badge">16</span>
@@ -1058,8 +1061,8 @@
         <div class="cat-name">Muscle &amp; Fitness</div>
         <div class="cat-desc">Muscle growth and fitness are closely connected to how the body adapts to training stimulus.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
-      <div class="cat-card">
+      </a>
+      <a class="cat-card" href="longevity.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">⏳</div>
           <span class="cat-count-badge">12</span>
@@ -1067,8 +1070,8 @@
         <div class="cat-name">Longevity</div>
         <div class="cat-desc">Longevity refers to the ability to live a long life while maintaining strong physical, mental, and cellular health.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
-      <div class="cat-card">
+      </a>
+      <a class="cat-card" href="healing-recovery.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">🏃</div>
           <span class="cat-count-badge">22</span>
@@ -1076,8 +1079,8 @@
         <div class="cat-name">Healing &amp; Recovery</div>
         <div class="cat-desc">Healing and recovery are essential parts of maintaining long-term health, performance, and quality of life.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
-      <div class="cat-card">
+      </a>
+      <a class="cat-card" href="anti-aging-skin.html">
         <div class="cat-card-top">
           <div class="cat-icon-wrap">✨</div>
           <span class="cat-count-badge">14</span>
@@ -1085,7 +1088,7 @@
         <div class="cat-name">Anti-Aging &amp; Skin</div>
         <div class="cat-desc">Skin aging is a natural biological process influenced by factors such as collagen loss and oxidative stress.</div>
         <div class="cat-explore">Explore →</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>

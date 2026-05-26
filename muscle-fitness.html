@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
@@ -6,7 +6,7 @@
   <title>Muscle &amp; Fitness — It's BioHacking</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=2"/>
+  <link rel="stylesheet" href="style.css?v=5"/>
 </head>
 <body>
 <!-- TRUST BAR -->
@@ -23,10 +23,24 @@
   <div class="nav-top">
     <a href="index.html" class="logo"><div class="logo-mark">🧬</div><div class="logo-text">It's <span>BioHacking</span></div></a>
     <div class="nav-top-right">
-      <button class="nav-search-btn">🔍</button>
-      <a href="#" class="btn-nav-cta">Subscribe Free →</a>
+      <div class="nav-search-field"><span style="font-size:14px;color:#9CA3AF;">🔍</span><input type="text" placeholder="Search peptides, protocols..." /></div>
+      <a href="peptide-calculator.html" class="btn-nav-calc">🧮 Calculator</a>
+      <a href="contact.html" class="btn-nav-cta">Contact Us</a>
+      <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="peptides-101.html">Peptides 101</a>
+    <a href="weight-loss.html">Weight Loss</a>
+    <a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a>
+    <a href="healing-recovery.html">Healing &amp; Recovery</a>
+    <a href="muscle-fitness.html">Muscle &amp; Fitness</a>
+    <a href="longevity.html">Longevity</a>
+    <a href="resources.html">Resources</a>
+    <a href="all-posts.html">All Posts</a>
+    <a href="contact.html" class="drawer-cta">Contact Us</a>
+  </div>
+  <script>document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mobileDrawer').classList.toggle('open');});</script>
   <nav class="nav-bottom">
     <a href="peptides-101.html">Peptides 101</a><div class="sep"></div>
     <a href="weight-loss.html">Weight Loss</a><div class="sep"></div>
@@ -34,8 +48,7 @@
     <a href="healing-recovery.html">Healing &amp; Recovery</a><div class="sep"></div>
     <a href="muscle-fitness.html" class="active">Muscle &amp; Fitness</a><div class="sep"></div>
     <a href="longevity.html">Longevity</a><div class="sep"></div>
-    <a href="resources.html">Resources</a><div class="sep"></div>
-    <a href="#" style="color:var(--green);font-weight:800;">🧮 Peptide Calculator</a>
+    <a href="resources.html">Resources</a><div class="sep"></div><a href="all-posts.html">All Posts</a>
   </nav>
 </div>
 <!-- CATEGORY HERO -->
@@ -110,7 +123,7 @@
         <p>Evidence-based peptide research and education for science-minded individuals optimizing their biology responsibly.</p>
         <div class="footer-social"><div class="social-btn">𝕏</div><div class="social-btn">in</div><div class="social-btn">f</div></div>
       </div>
-      <div class="footer-col"><h4>Categories</h4><ul><li><a href="peptides-101.html">Peptides 101</a></li><li><a href="weight-loss.html">Weight Loss</a></li><li><a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a></li><li><a href="healing-recovery.html">Healing &amp; Recovery</a></li><li><a href="muscle-fitness.html">Muscle &amp; Fitness</a></li><li><a href="longevity.html">Longevity</a></li><li><a href="resources.html">Resources</a></li></ul></div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="peptides-101.html">Peptides 101</a></li><li><a href="weight-loss.html">Weight Loss</a></li><li><a href="anti-aging-skin.html">Anti-Aging &amp; Skin</a></li><li><a href="healing-recovery.html">Healing &amp; Recovery</a></li><li><a href="muscle-fitness.html">Muscle &amp; Fitness</a></li><li><a href="longevity.html">Longevity</a></li><li><a href="resources.html">Resources</a><div class="sep"></div><a href="all-posts.html">All Posts</a></li></ul></div>
       <div class="footer-col"><h4>Learn</h4><ul><li><a href="#">Beginner's Guide</a></li><li><a href="#">Peptides A–Z Index</a></li><li><a href="#">Protocols Library</a></li><li><a href="#">How to Inject Peptides</a></li><li><a href="#">Glossary</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Write for Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Disclaimer</a></li></ul></div>
     </div>

@@ -1,0 +1,561 @@
+/* ================================================================
+   Peptide Calculator — WordPress Plugin Styles
+   Plugin: peptide-calculator
+   ================================================================ */
+
+/* Scoped CSS variables so the calculator is theme-agnostic */
+.peptide-calc-container {
+    --pc-green:        #1D6B3E;
+    --pc-green-dark:   #145C31;
+    --pc-green-light:  #E8F5EE;
+    --pc-green-mid:    #34A85A;
+    --pc-navy:         #0B1929;
+    --pc-text:         #374151;
+    --pc-muted:        #9CA3AF;
+    --pc-border:       #E5EAF2;
+    --pc-bg:           #F6F9FF;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--pc-text);
+    line-height: 1.6;
+}
+
+.peptide-calc-container *,
+.peptide-calc-container *::before,
+.peptide-calc-container *::after {
+    box-sizing: border-box;
+}
+
+/* ── Main Card ──────────────────────────────────────── */
+.peptide-calc-main-card {
+    background: #fff;
+    border: 1px solid var(--pc-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 32px rgba(0,0,0,.06);
+    margin-bottom: 48px;
+}
+
+.peptide-calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+    .peptide-calc-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Input Side ─────────────────────────────────────── */
+.peptide-calc-input-section {
+    padding: 32px;
+    border-right: 1px solid var(--pc-border);
+}
+
+@media (max-width: 900px) {
+    .peptide-calc-input-section {
+        border-right: none;
+        border-bottom: 1px solid var(--pc-border);
+    }
+}
+
+/* Quick Reference Info Box */
+.peptide-calc-info-box {
+    background: var(--pc-green-light);
+    border: 1px solid rgba(29,107,62,.15);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.peptide-calc-info-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pc-green);
+    margin: 0 0 10px 0;
+    padding: 0;
+    border: none;
+}
+
+.peptide-calc-info-box h4 svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.peptide-calc-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.peptide-calc-info-list li {
+    font-size: 12px;
+    color: var(--pc-text);
+    padding-left: 14px;
+    position: relative;
+    margin: 0;
+}
+
+.peptide-calc-info-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--pc-green);
+    font-weight: 700;
+}
+
+/* ── Input Groups ───────────────────────────────────── */
+.peptide-calc-input-group {
+    margin-bottom: 28px;
+}
+
+.peptide-calc-input-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.peptide-calc-input-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pc-navy);
+    margin-bottom: 2px;
+}
+
+.peptide-calc-input-subtitle {
+    font-size: 12px;
+    color: var(--pc-muted);
+}
+
+/* ── Option Buttons ─────────────────────────────────── */
+.peptide-calc-option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.peptide-calc-option-btn {
+    padding: 8px 16px;
+    border: 1.5px solid var(--pc-border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pc-text);
+    background: var(--pc-bg);
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    font-family: inherit;
+    line-height: 1.4;
+}
+
+.peptide-calc-option-btn:hover {
+    border-color: var(--pc-green);
+    color: var(--pc-green);
+    background: var(--pc-bg);
+}
+
+.peptide-calc-option-btn.active {
+    border-color: var(--pc-green);
+    background: var(--pc-green);
+    color: #fff;
+}
+
+/* ── Unit Toggle ────────────────────────────────────── */
+.peptide-calc-unit-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--pc-bg);
+    border: 1.5px solid var(--pc-border);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.peptide-calc-unit-btn {
+    padding: 5px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--pc-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all .15s;
+    font-family: inherit;
+}
+
+.peptide-calc-unit-btn.active {
+    background: var(--pc-green);
+    color: #fff;
+}
+
+/* ── Custom Input ───────────────────────────────────── */
+.peptide-calc-custom-input-wrapper {
+    display: none;
+    margin-top: 12px;
+}
+
+.peptide-calc-custom-input-wrapper.show {
+    display: block;
+}
+
+.peptide-calc-custom-input-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--pc-navy);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: 6px;
+}
+
+.peptide-calc-custom-input-container {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--pc-border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color .15s;
+    background: #fff;
+}
+
+.peptide-calc-custom-input-container:focus-within {
+    border-color: var(--pc-green);
+}
+
+.peptide-calc-custom-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--pc-navy);
+    background: transparent;
+    min-width: 0;
+    box-shadow: none;
+}
+
+.peptide-calc-custom-input-unit {
+    padding: 10px 14px;
+    background: var(--pc-bg);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pc-muted);
+    border-left: 1.5px solid var(--pc-border);
+    white-space: nowrap;
+}
+
+/* ── Conversion Text ────────────────────────────────── */
+.peptide-calc-conversion-text {
+    font-size: 11px;
+    color: var(--pc-green);
+    font-weight: 600;
+    margin-top: 8px;
+    background: var(--pc-green-light);
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.peptide-calc-conversion-text.hidden {
+    display: none;
+}
+
+/* ── Error ──────────────────────────────────────────── */
+.peptide-calc-error {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #DC2626;
+    margin-bottom: 16px;
+}
+
+.peptide-calc-error.show {
+    display: flex;
+}
+
+/* ── Reset Button ───────────────────────────────────── */
+.peptide-calc-reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1.5px solid var(--pc-border);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pc-text);
+    background: #fff;
+    cursor: pointer;
+    transition: all .15s;
+    font-family: inherit;
+}
+
+.peptide-calc-reset-btn:hover {
+    border-color: #EF4444;
+    color: #EF4444;
+    background: #fff;
+}
+
+/* ── Results Side ───────────────────────────────────── */
+.peptide-calc-results-section {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--pc-bg);
+}
+
+/* Results Card */
+.peptide-calc-results-card {
+    background: #fff;
+    border: 1px solid var(--pc-border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.peptide-calc-results-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.peptide-calc-results-header svg {
+    width: 22px;
+    height: 22px;
+    color: var(--pc-green);
+    flex-shrink: 0;
+}
+
+.peptide-calc-results-header h3 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--pc-navy);
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.peptide-calc-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--pc-border);
+}
+
+.peptide-calc-result-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.peptide-calc-result-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pc-muted);
+}
+
+.peptide-calc-result-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pc-navy);
+    font-variant-numeric: tabular-nums;
+}
+
+.peptide-calc-result-value.highlight {
+    color: var(--pc-green);
+    font-size: 18px;
+}
+
+/* ── Syringe Section ────────────────────────────────── */
+.peptide-calc-syringe-section {
+    background: #fff;
+    border: 1px solid var(--pc-border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.peptide-calc-syringe-header {
+    margin-bottom: 16px;
+}
+
+.peptide-calc-syringe-header h3 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--pc-navy);
+    margin: 0 0 4px 0;
+    padding: 0;
+    border: none;
+}
+
+.peptide-calc-syringe-header p {
+    font-size: 12px;
+    color: var(--pc-muted);
+    margin: 0;
+}
+
+.peptide-calc-syringe-units-display {
+    margin-bottom: 8px;
+}
+
+.peptide-calc-syringe-units-value {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--pc-green);
+    line-height: 1;
+}
+
+.peptide-calc-syringe-units-label {
+    font-size: 14px;
+    color: var(--pc-muted);
+    font-weight: 600;
+    margin-left: 6px;
+}
+
+.peptide-calc-syringe-scale-text {
+    font-size: 13px;
+    color: var(--pc-text);
+    margin-bottom: 16px;
+    min-height: 20px;
+}
+
+.peptide-calc-syringe-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Syringe SVG Parts */
+.peptide-calc-syringe-svg         { height: 280px; width: auto; }
+.peptide-calc-syringe-body        { fill: #F1F5F9; stroke: #CBD5E1; stroke-width: 1; }
+.peptide-calc-syringe-barrel      { fill: rgba(255,255,255,.8); stroke: none; }
+.peptide-calc-syringe-tip         { fill: #CBD5E1; }
+.peptide-calc-syringe-liquid      { fill: url(#pc-liquidGradient); }
+.peptide-calc-syringe-rubber      { fill: #64748B; }
+.peptide-calc-syringe-plunger-rod { stroke: #64748B; stroke-width: 3; }
+.peptide-calc-syringe-flange      { fill: #94A3B8; }
+.peptide-calc-syringe-graduation  { stroke: #94A3B8; stroke-width: 1; }
+.peptide-calc-syringe-graduation.major { stroke: #64748B; stroke-width: 1.5; }
+.peptide-calc-syringe-graduation-label { font-size: 7px; fill: #64748B; font-family: 'Inter', sans-serif; }
+
+/* ── Guide Section ──────────────────────────────────── */
+.peptide-calc-guide-section {
+    margin-bottom: 48px;
+}
+
+.peptide-calc-guide-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.peptide-calc-guide-header h2 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 800;
+    color: var(--pc-navy);
+    margin: 0 0 8px 0;
+    padding: 0;
+    border: none;
+}
+
+.peptide-calc-guide-header p {
+    font-size: 15px;
+    color: var(--pc-muted);
+    margin: 0;
+}
+
+.peptide-calc-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 700px) {
+    .peptide-calc-steps-grid { grid-template-columns: 1fr; }
+}
+
+.peptide-calc-step-card {
+    background: #fff;
+    border: 1px solid var(--pc-border);
+    border-radius: 12px;
+    padding: 28px 24px;
+}
+
+.peptide-calc-step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--pc-green);
+    color: #fff;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.peptide-calc-step-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pc-navy);
+    margin: 0 0 8px 0;
+    padding: 0;
+    border: none;
+}
+
+.peptide-calc-step-card p {
+    font-size: 13px;
+    color: var(--pc-text);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── Disclaimer Footer ──────────────────────────────── */
+.peptide-calc-footer {
+    text-align: center;
+    padding: 32px 24px;
+    background: #0B1929;
+    border-radius: 16px;
+    color: rgba(255,255,255,.6);
+}
+
+.peptide-calc-footer-disclaimer {
+    font-size: 13px;
+    font-weight: 700;
+    color: #FCD34D;
+    margin-bottom: 12px;
+}
+
+.peptide-calc-footer p {
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 0 0 4px 0;
+    color: rgba(255,255,255,.6);
+}
